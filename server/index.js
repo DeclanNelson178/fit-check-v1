@@ -11,7 +11,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 console.log('Starting server.');
-app.listen(PORT, () => console.log(`Server start on port ${PORT}.`));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}.`));
 
 // set up mongoose
 
@@ -21,4 +21,4 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   console.log('MongoDB connection established.')
 });
 
-console.log('quick edit');
+console.log('PRONE BONE');
