@@ -13,6 +13,10 @@ const PORT = process.env.PORT || 5000;
 console.log('Starting server.');
 app.listen(PORT, () => console.log(`Server started on port ${PORT}.`));
 
+// set up routes
+app.use('/tests', require('./routes/testRoutes'));
+
+
 // set up mongoose
 
 console.log('Connecting to MongoDB.');
@@ -20,5 +24,3 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   if (err) return console.error(err);
   console.log('MongoDB connection established.')
 });
-
-console.log('PRONE BONE');
