@@ -5,6 +5,7 @@ router.post('/', async (req, res) => {
 
   // retrieve the data from the request
   const { title } = req.body;
+  console.log(req.body);
 
   // construct the test model
   const newTest = new Test({

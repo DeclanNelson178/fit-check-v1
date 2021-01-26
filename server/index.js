@@ -14,7 +14,9 @@ console.log("Starting server.");
 app.listen(PORT, () => console.log(`Server started on port ${PORT}.`));
 
 // set up routes
-app.use("/tests", require("./routes/testRoutes"));
+app.use('/tests', require('./routes/testRoutes'));
+app.use('/auth', require('./routes/authRoutes'));
+
 
 // set up mongoose
 
