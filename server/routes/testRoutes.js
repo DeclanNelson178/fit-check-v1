@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const TestModel = require('../models/testModel');
+const jwtAuth = require('../middleware/jwtAuth');
 
 router.post('/', async (req, res) => {
 
@@ -21,7 +22,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/', jwtAuth, async (req, res) => {
+  console.log(req.user);
   const tests = await Test.find({});
   res.json(tests);
 });

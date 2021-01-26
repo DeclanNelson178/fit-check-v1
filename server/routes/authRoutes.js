@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const UserModel = require('../models/userModel');
+const jwt = require('jsonwebtoken');
 
 router.post('/signup', async (req, res) => {
 
@@ -24,10 +25,13 @@ router.post('/signup', async (req, res) => {
 
 
 router.post('/signin', async (req, res) => {
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
     const user = await User.findOne({ 'email': email, 'password': password });
-    res.json(user);
+    if (user) {
+      const accessToken = jwt.sign({ 'id': user._id }, process.env.SUPER_SECRET_ACCESS_TOKEN);
+      res.json({ accessToken });
+    }
   } catch(err) {
     console.error(err);
   }
