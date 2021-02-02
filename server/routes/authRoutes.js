@@ -1,9 +1,8 @@
-const router = require('express').Router();
-const UserModel = require('../models/userModel');
-const jwt = require('jsonwebtoken');
+const router = require("express").Router();
+const UserModel = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
-router.post('/signup', async (req, res) => {
-
+router.post("/signup", async (req, res) => {
   // retrieve the data from the request
   const { name, email, password } = req.body;
 
@@ -11,28 +10,27 @@ router.post('/signup', async (req, res) => {
   const newUser = new User({
     name,
     email,
-    password
+    password,
   });
 
   // save test model
   try {
     const savedUser = await newUser.save();
     res.json(savedUser);
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   }
 });
 
-
-router.post('/signin', async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ 'email': email, 'password': password });
+    const user = await User.findOne({ email: email, password: password });
     if (user) {
-      const accessToken = jwt.sign({ 'id': user._id }, process.env.SUPER_SECRET_ACCESS_TOKEN);
-      res.json({ accessToken });
+      // const accessToken = jwt.sign({ 'id': user._id }, process.env.SUPER_SECRET_ACCESS_TOKEN);
+      res.json({ "res.status": 200 });
     }
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   }
 });
