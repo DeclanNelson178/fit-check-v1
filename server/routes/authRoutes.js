@@ -28,7 +28,7 @@ router.post("/signin", async (req, res) => {
     const user = await User.findOne({ email: email, password: password });
     if (user) {
       // const accessToken = jwt.sign({ 'id': user._id }, process.env.SUPER_SECRET_ACCESS_TOKEN);
-      res.json({ "res.status": 200 });
+      res.json({ status: 200 });
     }
   } catch (err) {
     console.error(err);

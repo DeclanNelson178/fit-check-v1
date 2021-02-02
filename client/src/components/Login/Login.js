@@ -23,7 +23,9 @@ class Login extends Component {
         password: this.state.password,
       })
       .then((res) => {
-        console.log(res.data);
+        if (res.data.status == 200) {
+          this.props.data(this.state);
+        }
       });
   }
 
