@@ -53,6 +53,24 @@ body {
   left: 477px;
   top: 355px;
 }
+#e15_26_input {
+  background: transparent;
+  color: rgba(254.00000005960464, 253.0000001192093, 253.0000001192093, 1);
+  border: none;
+  width: 375px;
+  height: 40px;
+  top: 4px;
+  position: relative;
+}
+#e24_9_input {
+  background: transparent;
+  color: rgba(254.00000005960464, 253.0000001192093, 253.0000001192093, 1);
+  border: none;
+  width: 375px;
+  height: 40px;
+  top: 4px;
+  position: relative;
+}
 #e24_9 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: rgba(
@@ -113,18 +131,11 @@ body {
   top: 362px;
 }
 #e15_16 {
-  background-color: rgba(
-    254.00000005960464,
-    253.0000001192093,
-    253.0000001192093,
-    1
-  );
-  opacity: 1;
   width: 29.166669845581055px;
   height: 23.333332061767578px;
   position: absolute;
   left: 489.9166564941406px;
-  top: 367.83331298828125px;
+  top: 362.83331298828125px;
 }
 #e15_32 {
   background-color: rgba(
@@ -159,6 +170,23 @@ body {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+#e15_35_button {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: rgba(
+    254.00000005960464,
+    253.0000001192093,
+    253.0000001192093,
+    1
+  );
+  width: 311px;
+  height: 62px;
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 #e14_4 {
   color: rgba(254.00942355394363, 253.12739968299866, 253.12739968299866, 1);
   opacity: 1;
@@ -178,9 +206,7 @@ body {
   opacity: 1;
   width: 86px;
   height: 40px;
-  position: absolute;
-  left: 683px;
-  top: 646px;
+  position: relative;
   font-family: Roboto Condensed;
   text-align: center;
   font-size: 34px;
@@ -216,13 +242,11 @@ body {
   line-height: undefined;
 }
 #e24_10 {
-  background-color: rgba(255, 255, 255, 1);
-  opacity: 1;
   width: 29.170000076293945px;
   height: 23.329999923706055px;
   position: absolute;
   left: 490px;
-  top: 481px;
+  top: 475px;
 }
 #e24_11 {
   opacity: 1;
