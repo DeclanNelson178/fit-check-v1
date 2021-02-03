@@ -10,7 +10,20 @@ class Home extends Component {
   render() {
     return (
       <div className="screen">
-        <h1>EMILY HERE</h1>
+        <div id="e33_3">
+          <div id="e47_6"></div>
+          <div id="e47_20"></div>
+            <span id="e47_21">GET<br></br>INSPIRED</span>
+            <span id="e47_22">GET<br></br>ADVICE</span>
+          <div id="e46_7">
+            <div id="e44_7"></div>
+            <div id="e44_3"></div>
+            <div id="e44_4"></div>
+              <span id="e46_6">“FIT CHECK”</span>
+            <div id="e48_1"></div>
+            <div id="e46_9"></div>
+          </div>
+        </div>
       </div>
     );
   }
