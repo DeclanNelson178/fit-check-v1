@@ -7,6 +7,9 @@ class Home extends Component {
     this.state = {};
   }
 
+  handleSearch() {
+  }
+
   render() {
     return (
       <div className="screen">
@@ -21,7 +24,14 @@ class Home extends Component {
             <div id="e44_4"></div>
               <span id="e46_6">“FIT CHECK”</span>
             <div id="e48_1"></div>
-            <div id="e46_9"></div>
+            <div id="e46_9">
+              <input
+                id="e46_9_input"
+                placeholder=" what u tryna wear?"
+                //value={}
+                onChange={this.handleSearch}
+              ></input>
+            </div>
           </div>
         </div>
       </div>
