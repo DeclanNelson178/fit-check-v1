@@ -1,0 +1,149 @@
+#e33_3 { 
+	overflow:hidden;
+	background-color:rgba(255, 255, 255, 1);
+	opacity:1;
+	width:1440px;
+	height:900px;
+	position:absolute;
+}
+#e47_6 { 
+	opacity:1;
+	width:462px;
+	height:486.0240173339844px;
+	position:absolute;
+	left:798px;
+	top:220px;
+	background-image:url(images/emirror.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#e47_20 { 
+	opacity:1;
+	width:555px;
+	height:554px;
+	position:absolute;
+	left:200px;
+	top:270px;
+	background-image:url(images/eimage_1.png);
+	background-repeat:no-repeat;
+}
+#e47_21 { 
+	color:rgba(0, 0, 0, 1);
+	opacity:1;
+	width:246px;
+	height:120px;
+	position:absolute;
+	left:294px;
+	top:367px;
+	font-family:Helvetica;
+	font-weight: bold;
+	text-align:center;
+	font-size:52px;
+	letter-spacing:0;
+	line-height:undefined;
+}
+#e47_22 { 
+	color:rgba(0, 0, 0, 1);
+	opacity:1;
+	width:197px;
+	height:120px;
+	position:absolute;
+	left:931px;
+	top:355px;
+	font-family:Helvetica;
+	font-weight: bold;
+	text-align:center;
+	font-size:52px;
+	letter-spacing:0;
+	line-height:undefined;
+}
+#e46_7 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
+	background-color:rgba(255, 255, 255, 1);
+	opacity:1;
+	width:1440px;
+	height:104px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+#e44_7 { 
+	background-color:rgba(255, 255, 255, 1);
+	opacity:1;
+	border:1px solid rgba(0, 0, 0, 1);
+	width:1440px;
+	height:104px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+#e44_3 { 
+	opacity:1;
+	width:52px;
+	height:52px;
+	position:absolute;
+	left:1352px;
+	top:26px;
+	background-image:url(images/eavatar_icon.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#e44_4 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
+	background-color:rgba(255, 255, 255, 1);
+	opacity:1;
+	border:1px solid rgba(0, 0, 0, 1);
+	width:655px;
+	height:52px;
+	position:absolute;
+	left:491px;
+	top:26px;
+}
+#e46_6 { 
+	color:rgba(0, 0, 0, 1);
+	opacity:1;
+	width:330px;
+	height:52px;
+	position:absolute;
+	left:25px;
+	top:26px;
+	font-family:Helvetica;
+	font-weight: bold;
+	text-align:center;
+	font-size:52px;
+	letter-spacing:0;
+	line-height:undefined;
+}
+#e48_1 { 
+	opacity:1;
+	width:52px;
+	height:52px;
+	position:absolute;
+	left:1279px;
+	top:26px;
+	background-image:url(images/enotis.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#e46_9 { 
+	opacity:1;
+	width:36px;
+	height:36px;
+	position:absolute;
+	left:500px;
+	top:34px;
+	background-image:url(images/esearch_icon.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+#e46_9_input {
+	background: transparent;
+	color: rgb(0, 0, 0);
+	border: none;
+	width: 600px;
+	height: 50px;
+	left: 42px;
+	top: -7px;
+	position: relative;
+}
