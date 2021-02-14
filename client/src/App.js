@@ -7,27 +7,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
+      jwt: "",
     };
     this.update = this.update.bind(this);
   }
 
   async update(value) {
     await this.setState({
-      username: value.username,
-      password: value.password,
+      jwt: value,
     });
-    console.log(this.state.username);
+    console.log(this.state);
   }
 
   render() {
     return (
       <div className="App">
-        {this.state.username.length <= 0 ? (
+        {this.state.jwt.length <= 0 ? (
           <Login data={this.update.bind(this)} />
         ) : (
-          <Home />
+          <Home jwt={this.state.jwt} />
         )}
       </div>
     );
