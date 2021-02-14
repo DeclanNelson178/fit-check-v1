@@ -12,7 +12,9 @@ class Home extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSearch() {}
+  handleSearch() {
+    console.log(this.state.jwt);
+  }
 
   render() {
     return (
@@ -32,7 +34,14 @@ class Home extends Component {
           <span id="e47_21">
             GET<br></br>INSPIRED
           </span>
-          <Link to="/getadvice" params={{ jwt: this.props }}>
+          <Link
+            to={{
+              pathname: "/getadvice",
+              state: {
+                jwt: this.state.jwt,
+              },
+            }}
+          >
             <span id="e47_22">
               GET<br></br>ADVICE
             </span>
