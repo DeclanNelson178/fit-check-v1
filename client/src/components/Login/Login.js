@@ -10,6 +10,7 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
+      jwt: "",
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -24,9 +25,9 @@ class Login extends Component {
       })
       .then((res) => {
         if (res.status === 200) {
-          this.props.data(this.state);
+          this.props.data(res.data.token);
         } else {
-          console.log("BAD REQUEST");
+          // this.state.incorrectLogin = true;
         }
       });
   }

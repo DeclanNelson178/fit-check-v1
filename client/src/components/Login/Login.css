@@ -132,6 +132,7 @@
   left: 422px;
   top: 191px;
   font-family: Helvetica Neue;
+  font-style: italic;
   text-align: center;
   font-size: 36px;
   letter-spacing: 0;
@@ -179,6 +180,7 @@
   top: 0px;
   font-family: Helvetica;
   text-align: center;
+  font-weight: bold;
   font-size: 96px;
   letter-spacing: 0;
   line-height: undefined;
@@ -192,6 +194,7 @@
   left: 535px;
   top: 686px;
   font-family: Helvetica Neue;
+  font-style: italic;
   text-align: center;
   font-size: 24px;
   letter-spacing: 0;
