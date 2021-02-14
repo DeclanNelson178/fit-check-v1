@@ -5,13 +5,13 @@ class GetAdvice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "",
+      jwt: this.props.location.state.jwt,
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
   async handleImageUpload() {
-    console.log(this.props.location.state.jwt);
+    console.log(this.state.jwt);
     console.log("handling image upload");
   }
 

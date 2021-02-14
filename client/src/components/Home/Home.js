@@ -6,7 +6,9 @@ import "./Home.css";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      jwt: this.props.jwt,
+    };
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -20,7 +22,7 @@ class Home extends Component {
             to={{
               pathname: "/getadvice",
               state: {
-                jwt: this.props.jwt,
+                jwt: this.state.jwt,
               },
             }}
           >
