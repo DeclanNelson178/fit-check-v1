@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import "../GetAdvice/GetAdvice.css";
 
+/**
+ * Get Advice component where users can upload an image for analysis.
+ * Users can tag their photos with tags and descriptions to aid future sorting.
+ *
+ * @version 1.0.1
+ * @author [Abhinav Joshi] (https://github.com/abhijoshi2000)
+ * @author [Emily Costello] (https://github.com/ecostello9)
+ */
 class GetAdvice extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +18,7 @@ class GetAdvice extends Component {
     this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
+  // TODO: Add functionality of sending an image to the backend
   async handleImageUpload() {
     console.log(this.state.jwt);
     console.log("handling image upload");
