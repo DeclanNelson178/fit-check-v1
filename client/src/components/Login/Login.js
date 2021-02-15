@@ -1,21 +1,32 @@
 import React, { Component } from "react";
-import mailIcon from "./images/mail_outline.svg";
-import keyIcon from "./images/vpn_key.svg";
+import mailIcon from "./images/mail_outline.png";
+import keyIcon from "./images/vpn_key.png";
 import "./Login.css";
 import axios from "axios";
 
+/**
+ * Login component that handles user inputted email and password and validates user credentials.
+ * Returns a JWT auth token up throughout the component hierarchy in order to make future requests.
+ *
+ * @version 1.0.1
+ * @author [Abhinav Joshi] (https://github.com/abhijoshi2000)
+ * @author [Emily Costello] (https://github.com/ecostello9)
+ */
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
+      jwt: "",
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
+  // Axios is used to handle requests to backend endpoints --> Here we use a POST request
+  // with the user's inputted email and password
   handleLogin() {
     axios
       .post("http://localhost:5000/auth/signin", {
@@ -23,19 +34,25 @@ class Login extends Component {
         password: this.state.password,
       })
       .then((res) => {
-        if (res.data.status == 200) {
-          this.props.data(this.state);
+        if (res.status === 200) {
+          this.props.data(res.data.token);
+        } else {
+          // this.state.incorrectLogin = true;
         }
       });
   }
 
+  // Updates dynamically when user inputs email
   async handleUsernameChange(e) {
+    console.log(e.target.value);
     const oldPassword = this.state.password;
     await this.setState({ username: e.target.value, password: oldPassword });
   }
 
+  // Updates dynamically when user inputs password
   async handlePasswordChange(e) {
     const oldUsername = this.state.username;
+    console.log(e.target.value);
     await this.setState({
       username: oldUsername,
       password: e.target.value,
@@ -45,42 +62,40 @@ class Login extends Component {
   render() {
     return (
       <div className="screen">
-        <div id="e6_3">
-          <span id="e15_31">Forgot Password?</span>
-          <span id="e15_33">Remember Me</span>
-          <div id="e15_26">
-            <input
-              id="e15_26_input"
-              placeholder="example@example.com"
-              value={this.state.username}
-              onChange={this.handleUsernameChange}
-            ></input>
-          </div>
-          <div id="e24_9">
+        <div id="e43_2">
+          <div id="e43_5"></div>
+          <div id="e43_6">
             <input
               type="password"
-              id="e24_9_input"
+              id="e43_11_input"
               placeholder="*******************"
               value={this.state.password}
               onChange={this.handlePasswordChange}
             ></input>
           </div>
-          <span id="e15_17">Password</span>
-          <span id="e15_30">Email</span>
-          <div id="e15_16">
-            <img alt="" src={mailIcon} />
+          <span id="e43_7">Password</span>
+          <span id="e43_8">Email</span>
+          <div id="e43_10">
+            <input
+              id="e43_9_input"
+              placeholder="example@example.com"
+              value={this.state.username}
+              onChange={this.handleUsernameChange}
+            ></input>
           </div>
-          <div id="e15_32"></div>
-          <div id="e15_35">
-            <button id="e15_35_button" onClick={this.handleLogin}>
-              <span id="e15_36">LOGIN</span>
-            </button>
+          <div id="e43_11">
+            <img alt="" className="mail" src={mailIcon} />
           </div>
-          <span id="e14_4">your pocket stylist</span>
-          <span id="e9_0">“FIT CHECK”</span>
-          <span id="e15_37">Don’t have an account? Sign up here!</span>
-          <div id="e24_10">
-            <img alt="" src={keyIcon} />
+          <div id="e43_13"></div>
+          <span id="e43_14">your pocket stylist</span>
+          <span id="e43_15">LOGIN</span>
+          <button id="e43_15_button" onClick={this.handleLogin}></button>
+          <div id="e43_21">
+            <span id="e43_16">“FIT CHECK”</span>
+          </div>
+          <span id="e43_17">Don’t have an account? Sign up here!</span>
+          <div id="e43_18">
+            <img alt="" className="mail" src={keyIcon} />
           </div>
         </div>
       </div>

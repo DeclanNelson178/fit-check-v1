@@ -3,31 +3,39 @@ import "./App.css";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 
+/**
+ * Main top level component that handles the first end-user request to Login. On login success, routes to Home Screen.
+ * State consists of JWT auth token which is sent upon login and passed to requisite components.
+ *
+ * @version 1.0.1
+ * @author [Abhinav Joshi] (https://github.com/abhijoshi2000)
+ * @author [Emily Costello] (https://github.com/ecostello9)
+ */
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
+      jwt: "",
     };
     this.update = this.update.bind(this);
   }
 
+  // Handles updating JWT auth token based on backend response --> Updates state accordingly
   async update(value) {
     await this.setState({
-      username: value.username,
-      password: value.password,
+      jwt: value,
     });
-    console.log(this.state.username);
+    console.log(this.state);
   }
 
   render() {
     return (
       <div className="App">
-        {this.state.username.length <= 0 ? (
+        {this.state.jwt.length <= 0 ? (
           <Login data={this.update.bind(this)} />
         ) : (
-          <Home />
+          <Home jwt={this.state.jwt} />
         )}
       </div>
     );
