@@ -3,6 +3,14 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import GetAdvice from "../GetAdvice/GetAdvice";
 import "./Home.css";
 
+/**
+ * Home page component that acts as a main page from which users can navigate with the app.
+ * Currently supporrts "Get Inspired" and "Get Advice" subfields
+ *
+ * @version 1.0.1
+ * @author [Abhinav Joshi] (https://github.com/abhijoshi2000)
+ * @author [Emily Costello] (https://github.com/ecostello9)
+ */
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +20,7 @@ class Home extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
+  // TODO: Handle the search bar to render data based on search
   handleSearch() {
     console.log(this.state.jwt);
   }

@@ -4,6 +4,14 @@ import keyIcon from "./images/vpn_key.png";
 import "./Login.css";
 import axios from "axios";
 
+/**
+ * Login component that handles user inputted email and password and validates user credentials.
+ * Returns a JWT auth token up throughout the component hierarchy in order to make future requests.
+ *
+ * @version 1.0.1
+ * @author [Abhinav Joshi] (https://github.com/abhijoshi2000)
+ * @author [Emily Costello] (https://github.com/ecostello9)
+ */
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +25,8 @@ class Login extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
+  // Axios is used to handle requests to backend endpoints --> Here we use a POST request
+  // with the user's inputted email and password
   handleLogin() {
     axios
       .post("http://localhost:5000/auth/signin", {
@@ -32,12 +42,14 @@ class Login extends Component {
       });
   }
 
+  // Updates dynamically when user inputs email
   async handleUsernameChange(e) {
     console.log(e.target.value);
     const oldPassword = this.state.password;
     await this.setState({ username: e.target.value, password: oldPassword });
   }
 
+  // Updates dynamically when user inputs password
   async handlePasswordChange(e) {
     const oldUsername = this.state.username;
     console.log(e.target.value);
