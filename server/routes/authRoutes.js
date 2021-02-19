@@ -58,7 +58,7 @@ router.post("/signin", async (req, res) => {
         { id: foundUser._id },
         process.env.SUPER_SECRET_ACCESS_TOKEN
       );
-      res.json({ success: true, token: "Bearer" + accessToken });
+      res.json({ success: true, token: accessToken });
     } else {
       return res.status(400).json({ passwordIncorrect: "Password incorrect" });
     }
