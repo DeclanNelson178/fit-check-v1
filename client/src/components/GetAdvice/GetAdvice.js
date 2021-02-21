@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../GetAdvice/GetAdvice.css";
 
 /**
- * Get Advice component where users can upload an image for analysis.
- * Users can tag their photos with tags and descriptions to aid future sorting.
+ * Get Advice component where users can upload images for fashion advice
+ * Users can also tag images and provide descriptions
  *
  * @version 1.0.1
  * @author [Abhinav Joshi] (https://github.com/abhijoshi2000)
@@ -14,14 +15,73 @@ class GetAdvice extends Component {
     super(props);
     this.state = {
       jwt: this.props.location.state.jwt,
+      tags: "",
+      description: "",
+      file: null,
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.handleTagChange = this.handleTagChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.onFileChange = this.onFileChange.bind(this);
   }
 
-  // TODO: Add functionality of sending an image to the backend
-  async handleImageUpload() {
-    console.log(this.state.jwt);
-    console.log("handling image upload");
+  // Updates dynamically when user inputs tags
+  async handleTagChange(e) {
+    const oldJwt = this.state.jwt;
+    const oldDescription = this.state.description;
+    const oldFile = this.state.file;
+    await this.setState({
+      jwt: oldJwt,
+      description: oldDescription,
+      tags: e.target.value,
+      file: oldFile,
+    });
+  }
+
+  // Updates dynamically when user inputs description
+  async handleDescriptionChange(e) {
+    const oldJwt = this.state.jwt;
+    const oldTags = this.state.tags;
+    const oldFile = this.state.file;
+    await this.setState({
+      jwt: oldJwt,
+      tags: oldTags,
+      description: e.target.value,
+      file: oldFile,
+    });
+  }
+
+  async onFileChange(event) {
+    // Update the state
+    const oldJwt = this.state.jwt;
+    const oldTags = this.state.tags;
+    const oldDescription = this.state.description;
+    await this.setState({
+      jwt: oldJwt,
+      tags: oldTags,
+      description: oldDescription,
+      file: event.target.files[0],
+    });
+  }
+
+  async handleImageUpload(event) {
+    event.preventDefault();
+    // Create an object of formData
+    var formData = new FormData();
+
+    // Update the formData object
+    console.log(this.state);
+    formData.append("file", this.state.file);
+    formData.append("title", this.state.tags);
+    formData.append("description", this.state.description);
+
+    // Request made to the backend api
+    // Send formData object
+    axios.post("http://localhost:5000/outfits/create", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 
   render() {
@@ -37,20 +97,37 @@ class GetAdvice extends Component {
           <div id="e64_14"></div>
           <div id="e64_15"></div>
           <div id="e63_40"></div>
-          <div id="e64_24"></div>
-          <div id="e64_31"></div>
+          <div id="e64_24">
+            <input
+              id="e64_24_input"
+              value={this.state.tags}
+              onChange={this.handleTagChange}
+            ></input>
+          </div>
+          <div id="e64_31">
+            <input
+              id="e64_25_input"
+              value={this.state.description}
+              onChange={this.handleDescriptionChange}
+            ></input>
+          </div>
           <div id="e66_2"></div>
           <span id="e66_3">SUBMIT</span>
           <div id="e63_7">
             <div id="ei63_7_44_7"></div>
             <div id="ei63_7_44_3"></div>
-            <div id="ei63_7_44_4"></div>
+            <div id="ei63_7_44_4">
+              <button
+                id="ei63_7_44_4_button"
+                onClick={this.handleImageUpload}
+              ></button>
+            </div>
             <span id="ei63_7_46_6">“FIT CHECK”</span>
             <div id="ei63_7_46_9"></div>
             <div id="e48_1"></div>
           </div>
           <div id="e63_34">
-            <button id="e63_36" onClick={this.handleImageUpload}></button>
+            <input id="e63_36" type="file" onClick={this.onFileChange}></input>
           </div>
         </div>
       </div>

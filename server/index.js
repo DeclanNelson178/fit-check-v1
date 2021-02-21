@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+
 // set up express
 
 const app = express();
@@ -16,7 +17,7 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}.`));
 // set up routes
 app.use('/tests', require('./routes/testRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
-
+app.use('/outfits', require('./routes/outfitRoutes'));
 
 // set up mongoose
 
