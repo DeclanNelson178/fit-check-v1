@@ -42,6 +42,28 @@ class Login extends Component {
       });
   }
 
+  handleSignUp() {
+    // Get the modal
+    var modal = document.getElementById("signUpModal");
+    // button that opens the modal
+    var btn = document.getElementById("e43_17_button");
+    // close button
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
+
   // Updates dynamically when user inputs email
   async handleUsernameChange(e) {
     console.log(e.target.value);
@@ -68,7 +90,7 @@ class Login extends Component {
             <input
               type="password"
               id="e43_11_input"
-              placeholder="*******************"
+              placeholder="***************"
               value={this.state.password}
               onChange={this.handlePasswordChange}
             ></input>
@@ -94,6 +116,13 @@ class Login extends Component {
             <span id="e43_16">“FIT CHECK”</span>
           </div>
           <span id="e43_17">Don’t have an account? Sign up here!</span>
+          <button id="e43_17_button" onClick={this.handleSignUp}></button>
+          <div id="signUpModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>sign up :D</p>
+            </div>
+          </div>
           <div id="e43_18">
             <img alt="" className="mail" src={keyIcon} />
           </div>
