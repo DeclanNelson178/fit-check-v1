@@ -120,7 +120,13 @@ class Login extends Component {
           <div id="signUpModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>
-              <p>sign up :D</p>
+              <label>Name: </label>
+              <input type="text" id="name" class="sign-up-input" required></input><br></br>
+              <label>Email: </label>
+              <input type="text" id="email" class="sign-up-input" required></input><br></br>
+              <label>Password: </label>
+              <input type="text" id="password" class="sign-up-input" required></input><br></br>
+              <input type="submit" value="Sign Up"></input>
             </div>
           </div>
           <div id="e43_18">
