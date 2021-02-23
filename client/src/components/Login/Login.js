@@ -42,7 +42,7 @@ class Login extends Component {
       });
   }
 
-  handleSignUp() {
+  handleSignUpModal() {
     // Get the modal
     var modal = document.getElementById("signUpModal");
     // button that opens the modal
@@ -50,13 +50,10 @@ class Login extends Component {
     // close button
     var span = document.getElementsByClassName("close")[0];
     modal.style.display = "block";
-
-    // When the user clicks on <span> (x), close the modal
+    //closes the modal when "X" is clicked or outside of modal is clicked
     span.onclick = function() {
       modal.style.display = "none";
     }
-
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
@@ -116,17 +113,20 @@ class Login extends Component {
             <span id="e43_16">“FIT CHECK”</span>
           </div>
           <span id="e43_17">Don’t have an account? Sign up here!</span>
-          <button id="e43_17_button" onClick={this.handleSignUp}></button>
+          <button id="e43_17_button" onClick={this.handleSignUpModal}></button>
           <div id="signUpModal" class="modal">
             <div class="modal-content">
-              <span class="close">&times;</span>
-              <label>Name: </label>
-              <input type="text" id="name" class="sign-up-input" required></input><br></br>
-              <label>Email: </label>
-              <input type="text" id="email" class="sign-up-input" required></input><br></br>
-              <label>Password: </label>
-              <input type="text" id="password" class="sign-up-input" required></input><br></br>
-              <input type="submit" value="Sign Up"></input>
+              <span class="close">&times;</span><br></br><br></br>
+              <span id="e94_25">Name</span><br></br>
+              <div id="e94_23"></div><br></br>
+              <span id="e94_4">Email</span><br></br>
+              <div id="e94_1"></div><br></br>
+              <span id="e94_3">Password</span><br></br>
+              <div id="e94_2"></div><br></br>
+              <span id="e94_19">Confirm Password</span><br></br>
+              <div id="e94_14"></div><br></br>
+              <span id="e94_18">SIGN UP</span>
+              <div id="e94_8"></div>
             </div>
           </div>
           <div id="e43_18">
