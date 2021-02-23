@@ -1,0 +1,205 @@
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; 
+    height: 60%;
+    font-size: 16pt;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: rgb(255, 0, 0);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .signup-name {
+    opacity: 1;
+    border: 1px;
+    width: 98%;
+    height: 94%;
+    position: relative;
+    top:-24px;
+  }
+  
+  .signup-email {
+    opacity: 1;
+    border: 1px;
+    width: 98%;
+    height: 94%;
+    position: relative;
+    top:-4px;
+  }
+  .signup-password {
+    opacity: 1;
+    border: 1px;
+    width: 98%;
+    height: 94%;
+    position: relative;
+    top:-4px;
+  }
+  .signup-passwordC {
+    opacity: 1;
+    border: 1px;
+    width: 98%;
+    height: 94%;
+    position: relative;
+    top: -14px;
+  }
+  
+  .password-match-error {
+    color:rgb(255, 0, 0);
+    font-family: Helvetica Neue;
+    font-size: 12pt;
+    position: relative;
+  
+  }
+  
+  #signup_button {
+      opacity:0;
+    cursor: pointer;
+      width:100%;
+    height: 100%;
+    position: relative;
+    top: -40px;
+      border-top-left-radius:10px;
+      border-top-right-radius:10px;
+      border-bottom-left-radius:10px;
+      border-bottom-right-radius:10px;
+  }
+  #e94_8 { 
+      box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+      background-color:rgba(254.00000005960464, 253.0000001192093, 253.0000001192093, 1);
+      opacity:1;
+      width:30%;
+      height:62px;
+    position: relative;
+    left:35%;
+      top: 3%;
+      border-top-left-radius:10px;
+      border-top-right-radius:10px;
+      border-bottom-left-radius:10px;
+      border-bottom-right-radius:10px;
+  }
+  #e94_14 { 
+      box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+      background-color:rgba(255, 255, 255, 1);
+      opacity:1;
+      border:1px solid rgba(0, 0, 0, 1);
+      width:95%;
+      height:49px;
+      left:180px;
+      top:543px;
+  }
+  #e94_2 { 
+      box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+      background-color:rgba(255, 255, 255, 1);
+      opacity:1;
+      border:1px solid rgba(0, 0, 0, 1);
+      width:95%;
+      height:49px;
+  }
+  #e94_1 { 
+      box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+      background-color:rgba(255, 255, 255, 1);
+      opacity:1;
+      border:1px solid rgba(0, 0, 0, 1);
+      width:95%;
+      height:49px;
+  }
+  #e94_3 { 
+      color:rgba(0, 0, 0, 1);
+      opacity:1;
+      width:119px;
+      height:30px;
+    float: left;
+    padding-left: 4px;
+      font-family:Helvetica Neue;
+      font-size:24px;
+      letter-spacing:0;
+      line-height:undefined;
+  }
+  #e94_4 { 
+      color:rgba(0, 0, 0, 1);
+      opacity:1;
+      width:80px;
+      height:30px;
+    float: left;
+      font-family:Helvetica Neue;
+      font-size:24px;
+      letter-spacing:0;
+      line-height:undefined;
+  }
+  #e94_23 { 
+      box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+      background-color:rgba(255, 255, 255, 1);
+      opacity:1;
+      border:1px solid rgba(0, 0, 0, 1);
+      width:95%;
+      height:49px;
+  }
+  #e94_25 { 
+      color:rgba(0, 0, 0, 1);
+      opacity:1;
+      width:80px;
+      height:30px;
+      font-family:Helvetica Neue;
+      float: left;
+    padding-left: 1px;
+    padding-bottom: 20px;
+      font-size:24px;
+      letter-spacing:0;
+      line-height:undefined;
+  }
+  #e94_18 { 
+      color:rgba(0, 0, 0, 1);
+      opacity:1;
+      width:244px;
+      height:41px;
+    position: relative;
+    left:26%;
+      top: 5%;
+      font-family:Helvetica Neue;
+      float: left;
+      font-size:33px;
+      letter-spacing:0;
+      line-height:undefined;
+    z-index: 1;
+  }
+  #e94_19 { 
+      color:rgba(0, 0, 0, 1);
+      opacity:1;
+      width:200px;
+      height:40px;
+      font-family:Helvetica Neue;
+    float: left;
+    padding-left: 9px;
+      font-size:24px;
+      letter-spacing:0;
+      line-height:undefined;
+  }
