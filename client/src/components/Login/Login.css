@@ -292,6 +292,47 @@
   cursor: pointer;
 }
 
+.signup-name {
+  opacity: 1;
+  border: 1px;
+  width: 490px;
+  height: 45px;
+  position: relative;
+  top:-24px;
+}
+
+.signup-email {
+  opacity: 1;
+  border: 1px;
+  width: 490px;
+  height: 45px;
+  position: relative;
+  top:-4px;
+}
+.signup-password {
+  opacity: 1;
+  border: 1px;
+  width: 490px;
+  height: 45px;
+  position: relative;
+  top:-4px;
+}
+.signup-passwordC {
+  opacity: 1;
+  border: 1px;
+  width: 490px;
+  height: 45px;
+  position: relative;
+  top: -14px;
+}
+.password-match-error {
+  color:rgb(255, 0, 0);
+  font-family: Helvetica Neue;
+  font-size: 12pt;
+  position: relative;
+
+}
+
 
 #e94_8 { 
 	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -343,6 +384,7 @@
 	width:119px;
 	height:30px;
   float: left;
+  padding-left: 4px;
 	font-family:Helvetica Neue;
 	font-size:24px;
 	letter-spacing:0;
@@ -366,8 +408,6 @@
 	border:1px solid rgba(0, 0, 0, 1);
 	width:497px;
 	height:49px;
-	left:179px;
-	top:214px;
 }
 #e94_25 { 
 	color:rgba(0, 0, 0, 1);
@@ -376,6 +416,8 @@
 	height:30px;
 	font-family:Helvetica Neue;
 	float: left;
+  padding-left: 1px;
+  padding-bottom: 20px;
 	font-size:24px;
 	letter-spacing:0;
 	line-height:undefined;
@@ -400,10 +442,9 @@
 	opacity:1;
 	width:200px;
 	height:40px;
-	left:180px;
-	top:511px;
 	font-family:Helvetica Neue;
   float: left;
+  padding-left: 9px;
 	font-size:24px;
 	letter-spacing:0;
 	line-height:undefined;
