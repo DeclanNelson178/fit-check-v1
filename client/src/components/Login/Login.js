@@ -227,7 +227,7 @@ class Login extends Component {
                 placeholder="Johhny Appleseed"
                 class="signup-name"
                 value={this.state.new_name}
-                onChange={this.handleNameChange.bind(this)}
+                onChange={this.handleNameChange}
                 ></input>
               </div><br></br>
               <span id="e94_4">Email</span><br></br>
@@ -236,7 +236,7 @@ class Login extends Component {
                 placeholder="japple123@email.com"
                 class="signup-email"
                 value={this.state.new_email}
-                onChange={this.handleEmailChange.bind(this)}
+                onChange={this.handleEmailChange}
                 ></input>
               </div><br></br>
               <span id="e94_3">Password</span><br></br>
@@ -245,7 +245,7 @@ class Login extends Component {
                 placeholder="********"
                 class="signup-password"
                 value={this.state.new_password}
-                onChange={this.handleNewPassChange.bind(this)}
+                onChange={this.handleNewPassChange}
                 ></input>
               </div><br></br>
               <span id="e94_19">Confirm Password</span><br></br>
@@ -254,7 +254,7 @@ class Login extends Component {
                 placeholder="********"
                 class="signup-passwordC"
                 value={this.state.new_confirm_password}
-                onChange={this.handleNewConfirmPassChange.bind(this)}
+                onChange={this.handleNewConfirmPassChange}
                 ></input>
               </div><br></br>
               <span id="e94_18">SIGN UP</span>
