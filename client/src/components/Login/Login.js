@@ -27,6 +27,7 @@ class Login extends Component {
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.handler = this.handler.bind(this);
   }
 
   // Axios is used to handle requests to backend endpoints --> Here we use a POST request
@@ -40,22 +41,24 @@ class Login extends Component {
       .then((res) => {
         if (res.status === 200) {
           this.props.data(res.data.token);
-        } else {
-          this.state.incorrectLogin = true;
         }
       });
+  }
+
+  handler() {
+    this.setState({
+      signup: false,
+    });
   }
 
   async handleSignUp() {
     await this.setState({
       signup: true,
     });
-    console.log(this.state.signup);
   }
 
   // Updates dynamically when user inputs email
   async handleUsernameChange(e) {
-    console.log(e.target.value);
     const oldPassword = this.state.password;
     await this.setState({
       username: e.target.value,
@@ -66,7 +69,6 @@ class Login extends Component {
   // Updates dynamically when user inputs password
   async handlePasswordChange(e) {
     const oldUsername = this.state.username;
-    console.log(e.target.value);
     await this.setState({
       username: oldUsername,
       password: e.target.value,
@@ -77,7 +79,7 @@ class Login extends Component {
     return (
       <div className="screen">
         {this.state.signup ? (
-          <SignUp />
+          <SignUp handler={this.handler} />
         ) : (
           <div>
             {" "}

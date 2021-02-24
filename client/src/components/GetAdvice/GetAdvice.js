@@ -129,7 +129,11 @@ class GetAdvice extends Component {
           <div id="e63_34">
             <label class="style-file-upload">
               Choose File
-              <input id="e63_36" type="file" onClick={this.onFileChange}></input>
+              <input
+                id="e63_36"
+                type="file"
+                onClick={this.onFileChange}
+              ></input>
             </label>
           </div>
         </div>
