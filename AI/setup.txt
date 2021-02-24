@@ -1,0 +1,4 @@
+Requirements: Conda
+
+Instructions:
+conda create env fitcheck
