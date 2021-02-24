@@ -41,11 +41,16 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
 router.get('/', jwtAuth, async (req, res) => {
   try {
     // get user id from jwtAuth
+    const currUser = req.user.id;
 
     // query all users outfits
     // make sure to populate img
+    const outfits = await Outfit.find({owner: currUser}).populate("img");
     
     // sort outfits by creation date
+    // outfits.sort((a, b) => b.date - a.date);
+
+    res.send(outfits);
 
     // return outfits
   } catch (error) {
@@ -57,9 +62,11 @@ router.get('/:outfitId', async (req, res) => {
   try {
     const outfitId = req.params.id;
     // get user id from jwt auth
+    const currUser = req.user.id;
 
     // get the outfit id (pass user id param to verify correct ownership)
     // make sure to populate img
+
 
     // return outfit
   } catch (error) {
