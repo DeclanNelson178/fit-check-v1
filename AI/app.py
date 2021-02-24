@@ -58,11 +58,11 @@ predictor.build_model()
 
 
 
-
 app = flask.Flask(__name__)
-@app.route("/attributes/<filename>", methods=['GET'])
-def home(filename): # route handler function
+@app.route("/get-attributes", methods=['POST'])
+def home(): # route handler function
 	# returning a response
+	filename = str(flask.request.form['filename'])
 	res = flask.Response(predictor.get_image_attr(filename))
 	res.headers['Content-Type'] = "application/json"
 	return res

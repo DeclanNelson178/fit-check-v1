@@ -1,4 +1,8 @@
 Requirements: Conda
-
+dependencies.txt from teams folder "FitCheck App Files"
 Instructions:
-conda create env fitcheck
+conda create --name fitcheck
+conda activate fitcheck (or source activate fitcheck)
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+cd mmfashion
+python setup.py install
