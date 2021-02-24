@@ -77,7 +77,7 @@ class GetAdvice extends Component {
 
     // Request made to the backend api
     // Send formData object
-    axios.post("http://localhost:5000/outfits/create", formData, {
+    axios.post("http://localhost:5000/outfits", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
