@@ -200,6 +200,15 @@
   letter-spacing: 0;
   line-height: undefined;
 }
+#e43_17_button {
+  opacity: 0;
+  width: 377px;
+  height: 60px;
+  position: absolute;
+  left: 535px;
+  top: 686px;
+  cursor: pointer;
+}
 #e43_18 {
   background-color: rgba(255, 255, 255, 1);
   opacity: 1;
