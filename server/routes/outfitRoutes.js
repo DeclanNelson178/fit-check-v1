@@ -3,6 +3,7 @@ const Outfit = require('../models/outfitModel');
 const router = require("express").Router();
 const { upload } = require('../middleware/uploadFile');
 const jwtAuth = require('../middleware/jwtAuth');
+const path = require("path");
 
 router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
     try {
@@ -37,40 +38,40 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
   }
 );
 
-// get all of a users outfits
+// get all of a users outfits data (not image)
 router.get('/', jwtAuth, async (req, res) => {
   try {
-    // get user id from jwtAuth
-    const currUser = req.user.id;
 
-    // query all users outfits
-    // make sure to populate img
-    const outfits = await Outfit.find({owner: currUser}).populate("img");
-    
-    // sort outfits by creation date
-    // outfits.sort((a, b) => b.date - a.date);
-
-    res.send(outfits);
-
-    // return outfits
   } catch (error) {
-    res.status(400).send('Error while getting outfits. Try again later.');
+    res.status(400).send('Error while getting outfits data. Try again later.');
   }
 });
 
-router.get('/:outfitId', async (req, res) => {
+// get users single outfit data (not image)
+router.get('/:outfitId', jwtAuth, async (req, res) => {
   try {
-    const outfitId = req.params.id;
+
+  } catch (error) {
+    res.status(400).send('Error while getting outfit data. Try again later.');
+  }
+});
+
+// get an outfit image
+router.get('/image/:outfitId', jwtAuth, async (req, res) => {
+  try {
+    const outfitId = req.params.outfitId;
     // get user id from jwt auth
     const currUser = req.user.id;
 
     // get the outfit id (pass user id param to verify correct ownership)
-    // make sure to populate img
-
-
+    // make sure to populate img 
+    const outfit = await Outfit.findOne({ _id: outfitId, owner: currUser }).populate('img');
+    
     // return outfit
+    res.sendFile(path.join(__dirname, '..', outfit.img.filePath));
   } catch (error) {
-    res.status(400).send('Error while downloading file. Try again later.');
+    console.log(error);
+    res.status(400).send('Error while getting outfit image. Try again later.');
   }
 });
 
