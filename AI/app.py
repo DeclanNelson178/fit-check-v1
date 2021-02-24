@@ -17,7 +17,7 @@ class FitCheckPredictor:
 		self.args = {
 			"checkpoint":"checkpoint/Predict/vgg/global/latest.pth",
 			"config":"configs/attribute_predict/global_predictor_vgg_attr.py",
-			"use_cuda":True
+			"use_cuda":False
 		}
 	def build_model(self):
 		self.cfg = Config.fromfile(self.args["config"])
