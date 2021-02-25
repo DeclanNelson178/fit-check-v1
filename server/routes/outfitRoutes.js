@@ -3,6 +3,7 @@ const Outfit = require('../models/outfitModel');
 const router = require("express").Router();
 const { upload } = require('../middleware/uploadFile');
 const jwtAuth = require('../middleware/jwtAuth');
+const path = require("path");
 
 router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
     try {
@@ -24,7 +25,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
       })
       await outfit.save();
 
-      res.send("outfit created successfully");
+      res.send(outfit);
     } catch (error) {
       console.log(error);
       res.status(400).send("Error while creating outfit. Try again later.");
@@ -32,6 +33,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
   },
   (error, req, res, next) => {
     if (error) {
+      console.log(error);
       res.status(500).send(error.message);
     }
   }
@@ -40,30 +42,42 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
 // get all of a users outfits
 router.get('/', jwtAuth, async (req, res) => {
   try {
-    // get user id from jwtAuth
-
-    // query all users outfits
-    // make sure to populate img
-    
-    // sort outfits by creation date
-
-    // return outfits
+    const userId = req.user.id;
+    const outfits = await Outfit.find({ owner: userId }).populate('img');
+    res.send(outfits);
   } catch (error) {
-    res.status(400).send('Error while getting outfits. Try again later.');
+    res.status(400).send('Error while getting outfits data. Try again later.');
   }
 });
 
-router.get('/:outfitId', async (req, res) => {
+// get users single outfit data (not image)
+router.get('/:outfitId', jwtAuth, async (req, res) => {
   try {
-    const outfitId = req.params.id;
+    const userId = req.user.id;
+    const outfitId = req.params.outfitId;
+    const outfit = await Outfit.findOne({ _id: outfitId, owner: userId }).populate('img');
+    res.send(outfit);
+  } catch (error) {
+    res.status(400).send('Error while getting outfit data. Try again later.');
+  }
+});
+
+// get an outfit image
+router.get('/image/:outfitId', jwtAuth, async (req, res) => {
+  try {
+    const outfitId = req.params.outfitId;
     // get user id from jwt auth
+    const currUser = req.user.id;
 
     // get the outfit id (pass user id param to verify correct ownership)
-    // make sure to populate img
-
+    // make sure to populate img 
+    const outfit = await Outfit.findOne({ _id: outfitId, owner: currUser }).populate('img');
+    
     // return outfit
+    res.sendFile(path.join(__dirname, '..', outfit.img.filePath));
   } catch (error) {
-    res.status(400).send('Error while downloading file. Try again later.');
+    console.log(error);
+    res.status(400).send('Error while getting outfit image. Try again later.');
   }
 });
 
