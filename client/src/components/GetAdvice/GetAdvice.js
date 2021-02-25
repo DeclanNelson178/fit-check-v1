@@ -77,7 +77,7 @@ class GetAdvice extends Component {
 
     // Request made to the backend api
     // Send formData object
-    axios.post("http://localhost:5000/outfits/create", formData, {
+    axios.post("http://localhost:5000/outfits", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -127,7 +127,14 @@ class GetAdvice extends Component {
             <div id="e48_1"></div>
           </div>
           <div id="e63_34">
-            <input id="e63_36" type="file" onClick={this.onFileChange}></input>
+            <label class="style-file-upload">
+              Choose File
+              <input
+                id="e63_36"
+                type="file"
+                onClick={this.onFileChange}
+              ></input>
+            </label>
           </div>
         </div>
       </div>

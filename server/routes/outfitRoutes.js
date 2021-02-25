@@ -1,81 +1,84 @@
-const path = require("path");
-const multer = require("multer");
-const File = require("../models/file");
+const File = require("../models/fileModel");
+const Outfit = require('../models/outfitModel');
 const router = require("express").Router();
+const { upload } = require('../middleware/uploadFile');
+const jwtAuth = require('../middleware/jwtAuth');
+const path = require("path");
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, cb) {
-      cb(null, "./files");
-    },
-    filename(req, file, cb) {
-      cb(null, `${new Date().getTime()}_${file.originalname}`);
-    },
-  }),
-  limits: {
-    fileSize: 1000000000000000000000, // max file size 1MB = 1000000 bytes
-  },
-  fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf|doc|docx|xlsx|xls)$/)) {
-      return cb(
-        new Error(
-          "only upload files with jpg, jpeg, png, pdf, doc, docx, xslx, xls format."
-        )
-      );
-    }
-    cb(undefined, true); // continue with upload
-  },
-});
-
-router.post(
-  "/create",
-  upload.single("file"),
-  async (req, res) => {
+router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
     try {
-      console.log(req.file);
-      const { title, description } = req.body;
-      // const { path, mimetype } = req.file;
+      let { title, tags } = req.body;
+      const { path, mimetype } = req.file;
       const file = new File({
-        title,
-        description,
-        // file_path: path,
-        // file_mimetype: mimetype,
+        filePath: path,
+        fileMimetype: mimetype,
+        owner: req.user.id,
       });
       await file.save();
-      res.send("file uploaded successfully.");
+
+      tags = tags.split(',')
+      const outfit = new Outfit({
+        title: title,
+        tags: tags,
+        img: file,
+        owner: req.user.id,
+      })
+      await outfit.save();
+
+      res.send(outfit);
     } catch (error) {
-      res.status(400).send("Error while uploading file. Try again later.");
+      console.log(error);
+      res.status(400).send("Error while creating outfit. Try again later.");
     }
   },
   (error, req, res, next) => {
     if (error) {
+      console.log(error);
       res.status(500).send(error.message);
     }
   }
 );
 
-// Router.get('/getAllFiles', async (req, res) => {
-//   try {
-//     const files = await File.find({});
-//     const sortedByCreationDate = files.sort(
-//       (a, b) => b.createdAt - a.createdAt
-//     );
-//     res.send(sortedByCreationDate);
-//   } catch (error) {
-//     res.status(400).send('Error while getting list of files. Try again later.');
-//   }
-// });
+// get all of a users outfits
+router.get('/', jwtAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const outfits = await Outfit.find({ owner: userId }).populate('img');
+    res.send(outfits);
+  } catch (error) {
+    res.status(400).send('Error while getting outfits data. Try again later.');
+  }
+});
 
-// Router.get('/download/:id', async (req, res) => {
-//   try {
-//     const file = await File.findById(req.params.id);
-//     res.set({
-//       'Content-Type': file.file_mimetype
-//     });
-//     res.sendFile(path.join(__dirname, '..', file.file_path));
-//   } catch (error) {
-//     res.status(400).send('Error while downloading file. Try again later.');
-//   }
-// });
+// get users single outfit data (not image)
+router.get('/:outfitId', jwtAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const outfitId = req.params.outfitId;
+    const outfit = await Outfit.findOne({ _id: outfitId, owner: userId }).populate('img');
+    res.send(outfit);
+  } catch (error) {
+    res.status(400).send('Error while getting outfit data. Try again later.');
+  }
+});
+
+// get an outfit image (DEPRECATED!)
+router.get('/image/:outfitId', jwtAuth, async (req, res) => {
+  try {
+    const outfitId = req.params.outfitId;
+    // get user id from jwt auth
+    const currUser = req.user.id;
+
+    // get the outfit id (pass user id param to verify correct ownership)
+    // make sure to populate img 
+    const outfit = await Outfit.findOne({ _id: outfitId, owner: currUser }).populate('img');
+    
+    // return outfit
+    res.sendFile(path.join(__dirname, '..', outfit.img.filePath));
+  } catch (error) {
+    console.log(error);
+    res.status(400).send('Error while getting outfit image. Try again later.');
+  }
+});
 
 module.exports = router;

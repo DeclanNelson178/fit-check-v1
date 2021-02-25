@@ -305,4 +305,21 @@
   left: -10px;
   top: 0px;
   cursor: pointer;
+
+}
+.style-file-upload {
+  border: 1px solid rgb(0, 0, 0);
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  left: -16px;
+  top: 21px;
+  cursor: pointer;
+  font-family: Helvetica;
+  font-size: 12pt;
+  text-align: center;
+}
+input[type="file"] {
+  display: none;
 }
