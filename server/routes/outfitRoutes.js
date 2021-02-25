@@ -62,7 +62,7 @@ router.get('/:outfitId', jwtAuth, async (req, res) => {
   }
 });
 
-// get an outfit image
+// get an outfit image (DEPRECATED!)
 router.get('/image/:outfitId', jwtAuth, async (req, res) => {
   try {
     const outfitId = req.params.outfitId;
