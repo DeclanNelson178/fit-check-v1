@@ -14,7 +14,7 @@ const outfitSchema = new Schema({
   },
   rating: {
     type: Number,
-    required: false,
+    required: true,
   },
   img: {
     type: mongoose.Schema.Types.ObjectId,

@@ -5,6 +5,8 @@ const { upload } = require('../middleware/uploadFile');
 const jwtAuth = require('../middleware/jwtAuth');
 const path = require("path");
 
+const getRating = require('../helpers/ai/rating');
+
 router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
     try {
       let { title, tags } = req.body;
@@ -16,12 +18,15 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
       });
       await file.save();
 
+      const rating = getRating(path);
+
       tags = tags.split(',')
       const outfit = new Outfit({
         title: title,
         tags: tags,
         img: file,
         owner: req.user.id,
+        rating: rating,
       })
       await outfit.save();
 

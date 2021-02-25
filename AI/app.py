@@ -17,7 +17,7 @@ class FitCheckPredictor:
 		self.args = {
 			"checkpoint":"checkpoint/Predict/vgg/global/latest.pth",
 			"config":"configs/attribute_predict/global_predictor_vgg_attr.py",
-			"use_cuda":True
+			"use_cuda":False
 		}
 	def build_model(self):
 		self.cfg = Config.fromfile(self.args["config"])
@@ -62,9 +62,9 @@ app = flask.Flask(__name__)
 @app.route("/get-attributes", methods=['POST'])
 def home(): # route handler function
 	# returning a response
-	filename = str(flask.request.form['filename'])
+	filename = flask.request.get_json(silent=True)['filename']
 	res = flask.Response(predictor.get_image_attr(filename))
 	res.headers['Content-Type'] = "application/json"
 	return res
 
-app.run(debug = True)
+app.run(port=8000, debug = True)
