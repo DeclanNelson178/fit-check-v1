@@ -25,7 +25,11 @@ const outfitSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: User,
     required: true,
+  },
+},
+  {
+    timestamps: true,
   }
-});
+);
 
 module.exports = Outfit = mongoose.model('Outfit', outfitSchema)

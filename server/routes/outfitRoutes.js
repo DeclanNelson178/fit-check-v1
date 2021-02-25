@@ -25,7 +25,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
       })
       await outfit.save();
 
-      res.send("outfit created successfully");
+      res.send(outfit);
     } catch (error) {
       console.log(error);
       res.status(400).send("Error while creating outfit. Try again later.");
@@ -33,15 +33,18 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
   },
   (error, req, res, next) => {
     if (error) {
+      console.log(error);
       res.status(500).send(error.message);
     }
   }
 );
 
-// get all of a users outfits data (not image)
+// get all of a users outfits
 router.get('/', jwtAuth, async (req, res) => {
   try {
-
+    const userId = req.user.id;
+    const outfits = await Outfit.find({ owner: userId }).populate('img');
+    res.send(outfits);
   } catch (error) {
     res.status(400).send('Error while getting outfits data. Try again later.');
   }
@@ -50,7 +53,10 @@ router.get('/', jwtAuth, async (req, res) => {
 // get users single outfit data (not image)
 router.get('/:outfitId', jwtAuth, async (req, res) => {
   try {
-
+    const userId = req.user.id;
+    const outfitId = req.params.outfitId;
+    const outfit = await Outfit.findOne({ _id: outfitId, owner: userId }).populate('img');
+    res.send(outfit);
   } catch (error) {
     res.status(400).send('Error while getting outfit data. Try again later.');
   }
