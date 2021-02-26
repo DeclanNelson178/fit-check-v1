@@ -28,7 +28,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
         img: file,
         owner: req.user.id,
         rating: rating,
-        attributes
+        attributes: attributes,
       })
       await outfit.save();
 
