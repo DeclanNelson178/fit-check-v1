@@ -80,6 +80,7 @@ class GetAdvice extends Component {
     axios.post("http://localhost:5000/outfits", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: this.state.jwt,
       },
     });
   }
