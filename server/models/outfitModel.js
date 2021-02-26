@@ -1,3 +1,4 @@
+const { json } = require('express');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const File = require('./fileModel');
@@ -15,6 +16,10 @@ const outfitSchema = new Schema({
   rating: {
     type: Number,
     required: true,
+  },
+  attributes: {
+    type: Array,
+    required: false,
   },
   img: {
     type: mongoose.Schema.Types.ObjectId,

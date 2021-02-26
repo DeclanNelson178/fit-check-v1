@@ -18,7 +18,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
       });
       await file.save();
 
-      const rating = getRating(path);
+      const [rating, attributes] = getRating(path);
 
       tags = tags.split(',')
       const outfit = new Outfit({
@@ -27,6 +27,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
         img: file,
         owner: req.user.id,
         rating: rating,
+        attributes: attributes,
       })
       await outfit.save();
 
