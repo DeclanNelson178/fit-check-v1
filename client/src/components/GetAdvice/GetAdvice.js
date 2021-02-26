@@ -72,7 +72,7 @@ class GetAdvice extends Component {
     // Update the formData object
     console.log(this.state);
     formData.append("file", this.state.file);
-    formData.append("title", this.state.tags);
+    formData.append("tags", this.state.tags);
     formData.append("description", this.state.description);
 
     // Request made to the backend api
