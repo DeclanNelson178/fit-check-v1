@@ -53,23 +53,10 @@ router.get('/', jwtAuth, async (req, res) => {
 // get user's single outfit data (not image)
 router.get('/:outfitId', jwtAuth, async (req, res) => {
   try {
-<<<<<<< HEAD
-    const outfitId = req.params.outfitId;
-    // get user id from jwt auth
-    const currUser = req.user.id;
-
-    // get single outfit data from file type
-    const outfit = await Outfit.findOne({_id: outfitId, owner: currUser})
-    
-    // send outfit info to requester
-    res.send(outfit);
-
-=======
     const userId = req.user.id;
     const outfitId = req.params.outfitId;
     const outfit = await Outfit.findOne({ _id: outfitId, owner: userId }).populate('img');
     res.send(outfit);
->>>>>>> 2b33625d1c8f8b98f99f366899a1d1719140b7e8
   } catch (error) {
     res.status(400).send('Error while getting outfit data. Try again later.');
   }
