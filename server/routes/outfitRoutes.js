@@ -9,7 +9,8 @@ const getRating = require('../helpers/ai/rating');
 
 router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
     try {
-      let { title, tags } = req.body;
+      console.log(req.body);
+      let { tags, description } = req.body;
       const { path, mimetype } = req.file;
       const file = new File({
         filePath: path,
@@ -22,7 +23,7 @@ router.post("/", [jwtAuth, upload.single("file")], async (req, res) => {
 
       tags = tags.split(',')
       const outfit = new Outfit({
-        title: title,
+        description: description,
         tags: tags,
         img: file,
         owner: req.user.id,

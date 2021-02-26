@@ -5,7 +5,7 @@ const File = require('./fileModel');
 const User = require('./userModel');
 
 const outfitSchema = new Schema({
-  title: {
+  description: {
     type: String,
     required: true,
   },
@@ -19,7 +19,7 @@ const outfitSchema = new Schema({
   },
   attributes: {
     type: Array,
-    required: false,
+    required: true,
   },
   img: {
     type: mongoose.Schema.Types.ObjectId,
