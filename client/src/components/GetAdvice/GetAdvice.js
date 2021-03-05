@@ -128,7 +128,7 @@ class GetAdvice extends Component {
             <div id="e48_1"></div>
           </div>
           <div id="e63_34">
-            <label class="style-file-upload">
+            <label className="style-file-upload">
               Choose File
               <input
                 id="e63_36"
