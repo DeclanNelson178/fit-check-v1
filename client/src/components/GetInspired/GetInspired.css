@@ -18,6 +18,13 @@
   font-size: 36px;
   letter-spacing: 0;
 }
+#e112_20_img {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
 #e112_20 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
   background-color: rgba(255, 255, 255, 1);

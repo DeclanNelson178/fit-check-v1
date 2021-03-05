@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import inspo from "../GetInspired/images/inspo.jpg";
-import { InstantSearch } from "react-instantsearch-dom";
 import "../GetInspired/GetInspired.css";
 
 /**
@@ -18,7 +17,7 @@ class GetInspired extends Component {
       jwt: this.props.location.state.jwt,
       searchQuery: "",
       searched: false,
-      images: [],
+      images: ["", "", "", "", "", "", "", "", "", "", "", ""],
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.scrapeGoogleSearch = this.scrapeGoogleSearch.bind(this);
@@ -76,30 +75,110 @@ class GetInspired extends Component {
       searched: searched,
       images: newImages,
     });
+    console.log(newImages);
   }
 
   render() {
-    const images = this.state.images.map((image) => {
-      return <img key={image} src={image.url} className="img-responsive" />;
-    });
-
     return (
       <div>
         <div id="e112_15">
           <span id="e112_16">// GET INSPIRED</span>
-          <img hidden={this.state.searched} id="e112_16_img" src={inspo}></img>
-          <div hidden={!this.state.searched} id="e112_20"></div>
-          <div hidden={!this.state.searched} id="e112_21"></div>
-          <div hidden={!this.state.searched} id="e112_22"></div>
-          <div hidden={!this.state.searched} id="e112_23"></div>
-          <div hidden={!this.state.searched} id="e112_39"></div>
-          <div hidden={!this.state.searched} id="e112_40"></div>
-          <div hidden={!this.state.searched} id="e112_41"></div>
-          <div hidden={!this.state.searched} id="e112_42"></div>
-          <div hidden={!this.state.searched} id="e112_43"></div>
-          <div hidden={!this.state.searched} id="e112_44"></div>
-          <div hidden={!this.state.searched} id="e112_45"></div>
-          <div hidden={!this.state.searched} id="e112_46"></div>
+          <img
+            hidden={this.state.searched}
+            id="e112_16_img"
+            alt="img0"
+            src={inspo}
+          ></img>
+          <div hidden={!this.state.searched} id="e112_20">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img1"
+              src={this.state.images[0].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_21">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img2"
+              src={this.state.images[1].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_22">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img3"
+              src={this.state.images[2].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_23">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img4"
+              src={this.state.images[3].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_39">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img5"
+              src={this.state.images[4].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_40">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img6"
+              src={this.state.images[5].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_41">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img7"
+              src={this.state.images[6].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_42">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img8"
+              src={this.state.images[7].url}
+            ></img>
+          </div>
+          {/* <div hidden={!this.state.searched} id="e112_43">
+  
+          </div> */}
+          <div hidden={!this.state.searched} id="e112_44">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img9"
+              src={this.state.images[9].url}
+            ></img>
+          </div>
+          <div hidden={!this.state.searched} id="e112_45">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              alt="img10"
+              src={this.state.images[8].url}
+            ></img>
+          </div>
+          {/* <div hidden={!this.state.searched} id="e112_46">
+            <img
+              hidden={!this.state.searched}
+              id="e112_20_img"
+              src={this.state.images[11].url}
+            ></img>
+          </div> */}
           <div id="e112_50"></div>
           <div id="e112_52"></div>
           <div id="e112_54"></div>
@@ -111,7 +190,7 @@ class GetInspired extends Component {
           <div id="e112_70"></div>
           <div id="e112_73"></div>
           <span id="e114_21" hidden={!this.state.searched}>
-            12 search results for
+            10 search results for
           </span>
           <br></br>
           <span id="e114_21_2" hidden={!this.state.searched}>
