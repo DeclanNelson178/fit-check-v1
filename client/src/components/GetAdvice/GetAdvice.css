@@ -249,21 +249,28 @@
   line-height: undefined;
 }
 #e64_24_input {
+  font-family: Helvetica Neue;
+  font-style: italic;
+  font-size: 16px;
   opacity: 1;
   border: 0ch;
-  width: 350px;
-  height: 35px;
+  width: 888px;
+  height: 37px;
   position: relative;
-  left: -265px;
+  left: 0px;
   top: 0px;
 }
 #e64_25_input {
+  font-family: Helvetica Neue;
+  font-style: italic;
+  font-size: 18px;
+  resize: none;
   opacity: 1;
   border: 0ch;
-  width: 350px;
-  height: 60px;
+  width: 888px;
+  height: 95px;
   position: relative;
-  left: -265px;
+  left: 0px;
   top: 0px;
 }
 #ei63_7_46_9 {
@@ -305,7 +312,6 @@
   left: -10px;
   top: 0px;
   cursor: pointer;
-
 }
 .style-file-upload {
   border: 1px solid rgb(0, 0, 0);
