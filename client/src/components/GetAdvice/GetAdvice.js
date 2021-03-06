@@ -83,6 +83,9 @@ class GetAdvice extends Component {
         Authorization: this.state.jwt,
       },
     });
+
+    var img = "file";
+    document.getElementById('ei63_7_44_4').src = img.replace('90x90', '225x225')
   }
 
   render() {
