@@ -88,6 +88,12 @@
   left: 182px;
   top: 247px;
 }
+#img_preview {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 0px;
+}
 #e64_13 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
   background-color: rgba(255, 255, 255, 1);
@@ -294,7 +300,6 @@
   top: 31px;
 }
 #e63_34 {
-  background-color: rgba(255, 255, 255, 1);
   opacity: 1;
   width: 70px;
   height: 70px;
