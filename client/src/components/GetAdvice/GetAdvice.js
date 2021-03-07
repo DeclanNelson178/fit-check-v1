@@ -140,7 +140,7 @@ class GetAdvice extends Component {
               <input
                 id="e63_36"
                 type="file"
-                onClick={this.onFileChange}
+                onChange={this.onFileChange}
               ></input>
             </label>
           </div>
