@@ -22,7 +22,7 @@ router.post(
       });
       await file.save();
 
-      const [rating, attributes] = getRating(path);
+      const [rating, attributes] = await getRating(path);
 
       tags = tags.split(",");
       const outfit = new Outfit({
