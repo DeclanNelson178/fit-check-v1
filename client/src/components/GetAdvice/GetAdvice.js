@@ -72,7 +72,7 @@ class GetAdvice extends Component {
     // Update the formData object
     console.log(this.state);
     formData.append("file", this.state.file);
-    formData.append("title", this.state.tags);
+    formData.append("tags", this.state.tags);
     formData.append("description", this.state.description);
 
     // Request made to the backend api
@@ -80,6 +80,7 @@ class GetAdvice extends Component {
     axios.post("http://localhost:5000/outfits", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: this.state.jwt,
       },
     });
   }
@@ -105,11 +106,11 @@ class GetAdvice extends Component {
             ></input>
           </div>
           <div id="e64_31">
-            <input
+            <textarea
               id="e64_25_input"
               value={this.state.description}
               onChange={this.handleDescriptionChange}
-            ></input>
+            ></textarea>
           </div>
           <div id="e66_2"></div>
           <span id="e66_3">SUBMIT</span>
@@ -127,7 +128,7 @@ class GetAdvice extends Component {
             <div id="e48_1"></div>
           </div>
           <div id="e63_34">
-            <label class="style-file-upload">
+            <label className="style-file-upload">
               Choose File
               <input
                 id="e63_36"
