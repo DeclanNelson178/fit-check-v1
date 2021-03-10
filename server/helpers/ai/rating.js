@@ -19,7 +19,7 @@ const getRating = (filePath) => {
     // request to flask server with file path
     const formData = new FormData();
     formData.append('filename', filePath.toString());
-    const url = 'http://127.0.0.1:8000/get-attributes';
+    const url = 'http://127.0.0.1:8000/get-analysis';
     console.log('calling ai');
     axios({
       method: "post",
