@@ -1,3 +1,7 @@
+// Model for user outfits
+// - Contains {description, tags, rating, attributes, img, owner}
+//    - img is a file (uploaded image)
+
 const { json } = require('express');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;

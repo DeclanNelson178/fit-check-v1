@@ -1,3 +1,7 @@
+// User model for retaining user-unique information
+// - contains {name, email, password}
+//    - password is sent through hashing function and not retained explicitly
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
