@@ -106,11 +106,11 @@ class GetAdvice extends Component {
             ></input>
           </div>
           <div id="e64_31">
-            <input
+            <textarea
               id="e64_25_input"
               value={this.state.description}
               onChange={this.handleDescriptionChange}
-            ></input>
+            ></textarea>
           </div>
           <div id="e66_2"></div>
           <span id="e66_3">SUBMIT</span>
@@ -128,7 +128,7 @@ class GetAdvice extends Component {
             <div id="e48_1"></div>
           </div>
           <div id="e63_34">
-            <label class="style-file-upload">
+            <label className="style-file-upload">
               Choose File
               <input
                 id="e63_36"

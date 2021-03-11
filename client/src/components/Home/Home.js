@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import GetAdvice from "../GetAdvice/GetAdvice";
+import GetInspired from "../GetInspired/GetInspired";
 import "./Home.css";
 
 /**
@@ -39,10 +40,28 @@ class Home extends Component {
           >
             <div id="e47_6"></div>
           </Link>
-          <div id="e47_20"></div>
-          <span id="e47_21">
-            GET<br></br>INSPIRED
-          </span>
+          <Link
+            to={{
+              pathname: "/getinspired",
+              state: {
+                jwt: this.state.jwt,
+              },
+            }}
+          >
+            <div id="e47_20"></div>
+          </Link>
+          <Link
+            to={{
+              pathname: "/getinspired",
+              state: {
+                jwt: this.state.jwt,
+              },
+            }}
+          >
+            <span id="e47_21">
+              GET<br></br>INSPIRED
+            </span>
+          </Link>
           <Link
             to={{
               pathname: "/getadvice",
@@ -72,6 +91,7 @@ class Home extends Component {
           </div>
         </div>
         <Switch>
+          <Route path="/getinspired" component={GetInspired} />
           <Route path="/getadvice" component={GetAdvice} />
         </Switch>
       </BrowserRouter>
