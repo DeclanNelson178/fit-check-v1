@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import mailIcon from "./images/mail_outline.png";
-import keyIcon from "./images/vpn_key.png";
 import "./Login.css";
 import axios from "axios";
 import SignUp from "../SignUp/SignUp";
@@ -105,14 +103,14 @@ class Login extends Component {
                   ></input>
                 </div>
                 <div id="e43_11">
-                  <a className="fa icon-envelope fa-5x"></a>
+                  <a className="icon-envelope"> </a>
                 </div>
                 <div id="e43_13"></div>
                 <span id="e43_14">your pocket stylist</span>
                 <span id="e43_15">LOGIN</span>
                 <button id="e43_15_button" onClick={this.handleLogin}></button>
                 <div id="e43_21">
-                  <span id="e43_16">“FIT CHECK”</span>
+                  <span id="e43_16">// FIT CHECK</span>
                 </div>
                 <span id="e43_17">Don’t have an account? Sign up here!</span>
                 <button id="e43_17_button" onClick={this.handleSignUp}></button>

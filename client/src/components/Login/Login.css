@@ -297,7 +297,3 @@
   position: absolute;
   z-index: 1;
 }
-.stop-scrolling {
-  height: 70%;
-  overflow: hidden;
-}
