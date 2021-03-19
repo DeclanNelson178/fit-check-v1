@@ -228,7 +228,7 @@
 #e112_16_img {
   width: 50%;
   margin-left: 50px;
-  margin-top: 300px;
+  margin-top: 250px;
   position: relative;
 }
 #e112_70 {
@@ -342,6 +342,7 @@
   height: 36px;
   position: absolute;
   left: 500px;
+  border: black;
   top: 34px;
   background-image: url(images/esearch_icon.png);
   background-repeat: no-repeat;
@@ -400,12 +401,12 @@
   background: transparent;
   color: rgb(0, 0, 0);
   border: none;
-  width: 600px;
+  width: 400px;
   height: 50px;
-  left: 25px;
+  left: 30px;
   font-size: large;
   font-weight: bold;
   font-family: Helvetica;
-  top: 0px;
+  top: 25px;
   position: relative;
 }

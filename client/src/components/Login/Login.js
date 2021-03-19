@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import mailIcon from "./images/mail_outline.png";
-import keyIcon from "./images/vpn_key.png";
 import "./Login.css";
 import axios from "axios";
 import SignUp from "../SignUp/SignUp";
@@ -82,44 +80,50 @@ class Login extends Component {
           <SignUp handler={this.handler} />
         ) : (
           <div>
-            {" "}
-            <div id="e43_2">
-              <div id="e43_5"></div>
-              <div id="e43_6">
-                <input
-                  type="password"
-                  id="e43_11_input"
-                  placeholder="***************"
-                  value={this.state.password}
-                  onChange={this.handlePasswordChange}
-                ></input>
-              </div>
-              <span id="e43_7">Password</span>
-              <span id="e43_8">Email</span>
-              <div id="e43_10">
-                <input
-                  id="e43_9_input"
-                  placeholder="example@example.com"
-                  value={this.state.username}
-                  onChange={this.handleUsernameChange}
-                ></input>
-              </div>
-              <div id="e43_11">
-                <img alt="" className="mail" src={mailIcon} />
-              </div>
-              <div id="e43_13"></div>
-              <span id="e43_14">your pocket stylist</span>
-              <span id="e43_15">LOGIN</span>
-              <button id="e43_15_button" onClick={this.handleLogin}></button>
-              <div id="e43_21">
-                <span id="e43_16">“FIT CHECK”</span>
-              </div>
-              <span id="e43_17">Don’t have an account? Sign up here!</span>
-              <button id="e43_17_button" onClick={this.handleSignUp}></button>
-              <div id="e43_18">
-                <img alt="" className="mail" src={keyIcon} />
+            <div>
+              <div id="e43_2">
+                <div id="e43_5"></div>
+                <div id="e43_6">
+                  <input
+                    type="password"
+                    id="e43_11_input"
+                    placeholder="***************"
+                    value={this.state.password}
+                    onChange={this.handlePasswordChange}
+                  ></input>
+                </div>
+                <span id="e43_7">Password</span>
+                <span id="e43_8">Email</span>
+                <div id="e43_10">
+                  <input
+                    id="e43_9_input"
+                    placeholder="example@example.com"
+                    value={this.state.username}
+                    onChange={this.handleUsernameChange}
+                  ></input>
+                </div>
+                <div id="e43_11">
+                  <a className="icon-envelope"> </a>
+                </div>
+                <div id="e43_13"></div>
+                <span id="e43_14">your pocket stylist</span>
+                <span id="e43_15">LOGIN</span>
+                <button id="e43_15_button" onClick={this.handleLogin}></button>
+                <div id="e43_21">
+                  <span id="e43_16">// FIT CHECK</span>
+                </div>
+                <span id="e43_17">Don’t have an account? Sign up here!</span>
+                <button id="e43_17_button" onClick={this.handleSignUp}></button>
+                <div id="e43_18">
+                  <a className="icon-key"></a>
+                </div>
               </div>
             </div>
+            <div id="e135_23"></div>
+            <div id="e134_0"></div>
+            <div id="e135_21"></div>
+            <div id="e158_1"></div>
+            <div id="e159_1"></div>
           </div>
         )}
       </div>

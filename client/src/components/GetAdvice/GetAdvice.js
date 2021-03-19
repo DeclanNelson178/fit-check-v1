@@ -60,8 +60,13 @@ class GetAdvice extends Component {
       jwt: oldJwt,
       tags: oldTags,
       description: oldDescription,
-      file: event.target.files[0],
+      file: window.URL.createObjectURL(
+        new Blob([event.target.files[0]], {
+        type: "image/png",
+        })
+        ),
     });
+    document.getElementById("e63_34").style.opacity = 0;
   }
 
   async handleImageUpload(event) {
@@ -93,7 +98,9 @@ class GetAdvice extends Component {
           <span id="e63_63">// TAGS</span>
           <span id="e63_64">// DESCRIPTION</span>
           <span id="e63_37">DRAFTS</span>
-          <div id="e64_12"></div>
+          <div id="e64_12">
+            <img id="img_preview" src={this.state.file}/>
+          </div>
           <div id="e64_13"></div>
           <div id="e64_14"></div>
           <div id="e64_15"></div>
@@ -133,7 +140,7 @@ class GetAdvice extends Component {
               <input
                 id="e63_36"
                 type="file"
-                onClick={this.onFileChange}
+                onChange={this.onFileChange}
               ></input>
             </label>
           </div>

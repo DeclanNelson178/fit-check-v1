@@ -153,32 +153,6 @@ class GetInspired extends Component {
               src={this.state.images[7].url}
             ></img>
           </div>
-          {/* <div hidden={!this.state.searched} id="e112_43">
-  
-          </div> */}
-          <div hidden={!this.state.searched} id="e112_44">
-            <img
-              hidden={!this.state.searched}
-              id="e112_20_img"
-              alt="img9"
-              src={this.state.images[9].url}
-            ></img>
-          </div>
-          <div hidden={!this.state.searched} id="e112_45">
-            <img
-              hidden={!this.state.searched}
-              id="e112_20_img"
-              alt="img10"
-              src={this.state.images[8].url}
-            ></img>
-          </div>
-          {/* <div hidden={!this.state.searched} id="e112_46">
-            <img
-              hidden={!this.state.searched}
-              id="e112_20_img"
-              src={this.state.images[11].url}
-            ></img>
-          </div> */}
           <div id="e112_50"></div>
           <div id="e112_52"></div>
           <div id="e112_54"></div>
@@ -190,7 +164,7 @@ class GetInspired extends Component {
           <div id="e112_70"></div>
           <div id="e112_73"></div>
           <span id="e114_21" hidden={!this.state.searched}>
-            10 search results for
+            8 search results for
           </span>
           <br></br>
           <span id="e114_21_2" hidden={!this.state.searched}>
@@ -198,23 +172,23 @@ class GetInspired extends Component {
           </span>
           <div id="e112_48"></div>
           <div id="e112_56"></div>
-          <div id="e112_29">
-            <div id="ei112_29_44_7"></div>
-            <div id="ei112_29_44_3"></div>
-            <div id="ei112_29_44_4">
-              <input
-                id="e46_9_input_1"
-                placeholder="Get Inspired..."
-                //value={}
-                onChange={this.handleSearch}
-                onKeyDown={this.scrapeGoogleSearch}
-              ></input>
-            </div>
-            <span id="ei112_29_46_6">“FIT CHECK”</span>
+          <div class="e136_2000">
+            <div class="e136_2001"></div>
+            <div class="e136_2002"></div>
             <div id="ei112_29_46_9"></div>
-            <div id="ei112_29_63_67"></div>
+            <input
+              id="e46_9_input_1"
+              placeholder="Get Inspired..."
+              onChange={this.handleSearch}
+              onKeyDown={this.scrapeGoogleSearch}
+            ></input>
+            <span class="e136_2003">// FIT CHECK</span>
           </div>
-        </div>{" "}
+          <div class="e78_0"></div>
+          <div class="e82_14"></div>
+          <div class="e145_7"></div>
+          <div class="e145_8"></div>
+        </div>
       </div>
     );
   }

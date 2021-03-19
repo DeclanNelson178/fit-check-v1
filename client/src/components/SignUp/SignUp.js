@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./SignUp.css";
-import mailIcon from "./images/mail_outline.png";
-import keyIcon from "./images/vpn_key.png";
 import axios from "axios";
 
 /**
@@ -102,6 +100,7 @@ class SignUp extends Component {
       <div className="screen">
         <div id="e86_14">
           <div id="e86_15">
+            <a className="icon-envelope" id="icon-envelope-2"></a>
             <input
               placeholder="japple123@email.com"
               className="signup-input"
@@ -110,6 +109,7 @@ class SignUp extends Component {
             ></input>
           </div>
           <div id="e86_16">
+            <a className="icon-key" id="icon-key-2"></a>
             <input
               placeholder="********"
               type="password"
@@ -120,15 +120,10 @@ class SignUp extends Component {
           </div>
           <span id="e86_17">Password</span>
           <span id="e86_18">Email</span>
-          <div id="e86_19">
-            <img alt="" className="mail" src={keyIcon} />
-          </div>
-          <div id="e86_20">
-            <img alt="" className="mail" src={mailIcon} />
-          </div>
           <div id="e103_18">
+            <a className="icon-user" id="icon-user-2"></a>
             <input
-              placeholder="Johhny Appleseed"
+              placeholder="Johnny Appleseed"
               className="signup-input"
               value={this.state.name}
               onChange={this.handleNameChange}
@@ -140,9 +135,10 @@ class SignUp extends Component {
           </div>
           <span id="e86_23">your pocket stylist</span>
           <div id="e86_25">
-            <span id="ei86_25_43_16">“FIT CHECK”</span>
+            <span id="ei86_25_43_16">// FIT CHECK</span>
           </div>
           <div id="e87_0">
+            <a className="icon-key" id="icon-key-2"></a>
             <input
               placeholder="********"
               type="password"
@@ -151,9 +147,7 @@ class SignUp extends Component {
               onChange={this.handleConfirmPasswordChange}
             ></input>
           </div>
-          <div id="e87_2">
-            <img alt="" className="mail" src={keyIcon} />
-          </div>
+          <div id="e87_2"></div>
           <span id="e91_22">SIGN UP</span>
           <span id="e91_24">Confirm Password</span>
           {this.state.password === this.state.passwordC ? (
@@ -161,7 +155,10 @@ class SignUp extends Component {
           ) : (
             <span id="e91_26">Passwords do not match!</span>
           )}
-          <div id="e104_15"></div>
+          <div id="e134_0"></div>
+          <div id="e135_21"></div>
+          <div id="e158_1"></div>
+          <div id="e159_1"></div>
         </div>
       </div>
     );
