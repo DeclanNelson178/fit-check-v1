@@ -1,3 +1,6 @@
+// Temporary route used to test initial communication functionality
+// **No longer implemented**
+
 const router = require("express").Router();
 const TestModel = require("../models/testModel");
 const jwtAuth = require("../middleware/jwtAuth");
