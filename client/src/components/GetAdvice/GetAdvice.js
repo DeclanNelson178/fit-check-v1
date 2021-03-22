@@ -138,6 +138,10 @@ class GetAdvice extends Component {
             ></button>
           </div>
           <span  id="e136_2024">SUBMIT</span>
+          <div id="e134_0"></div>
+          <div id="e135_21"></div>
+          <div id="e158_1"></div>
+          <div id="e159_1"></div>
         </div>
 
 

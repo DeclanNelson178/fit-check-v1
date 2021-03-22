@@ -176,12 +176,14 @@ class GetInspired extends Component {
             <div class="e136_2001"></div>
             <div class="e136_2002"></div>
             <div id="ei112_29_46_9"></div>
-            <input
-              id="e46_9_input_1"
-              placeholder="Get Inspired..."
-              onChange={this.handleSearch}
-              onKeyDown={this.scrapeGoogleSearch}
-            ></input>
+            <div id="e46_9">
+              <input
+                id="e46_9_input_1"
+                placeholder="Get Inspired..."
+                onChange={this.handleSearch}
+                onKeyDown={this.scrapeGoogleSearch}
+              ></input> 
+            </div>
             <span class="e136_2003">// FIT CHECK</span>
           </div>
           <div class="e78_0"></div>
