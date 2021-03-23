@@ -62,9 +62,9 @@ class GetAdvice extends Component {
       description: oldDescription,
       file: window.URL.createObjectURL(
         new Blob([event.target.files[0]], {
-        type: "image/png",
+          type: "image/png",
         })
-        ),
+      ),
     });
     document.getElementById("e63_34").style.opacity = 0;
   }
@@ -97,46 +97,11 @@ class GetAdvice extends Component {
           <span id="e64_9">// GET ADVICE</span>
           <span id="e63_63">// TAGS</span>
           <span id="e63_64">// DESCRIPTION</span>
-          <span id="e63_37">DRAFTS</span>
-          <div id="e64_12">
-            <img id="img_preview" src={this.state.file}/>
-          </div>
-          <div id="e64_13"></div>
-          <div id="e64_14"></div>
-          <div id="e64_15"></div>
-          <div id="e63_40"></div>
-          <div id="e64_24">
-            <input
-              id="e64_24_input"
-              value={this.state.tags}
-              onChange={this.handleTagChange}
-            ></input>
-          </div>
-          <div id="e64_31">
-            <textarea
-              id="e64_25_input"
-              value={this.state.description}
-              onChange={this.handleDescriptionChange}
-            ></textarea>
-          </div>
-          <div id="e66_2"></div>
-          <span id="e66_3">SUBMIT</span>
-          <div id="e63_7">
-            <div id="ei63_7_44_7"></div>
-            <div id="ei63_7_44_3"></div>
-            <div id="ei63_7_44_4">
-              <button
-                id="ei63_7_44_4_button"
-                onClick={this.handleImageUpload}
-              ></button>
-            </div>
-            <span id="ei63_7_46_6">“FIT CHECK”</span>
-            <div id="ei63_7_46_9"></div>
-            <div id="e48_1"></div>
+          <div id="e64_123">
+            <img id="img_preview" src={this.state.file} />
           </div>
           <div id="e63_34">
             <label className="style-file-upload">
-              Choose File
               <input
                 id="e63_36"
                 type="file"
@@ -144,6 +109,36 @@ class GetAdvice extends Component {
               ></input>
             </label>
           </div>
+          <div id="e64_24">
+            <input
+              id="tags_input"
+              value={this.state.tags}
+              onChange={this.handleTagChange}
+            ></input>
+          </div>
+          <div id="e64_31">
+            <textarea
+              id="description_input"
+              value={this.state.description}
+              onChange={this.handleDescriptionChange}
+            ></textarea>
+          </div>
+          <div id="e136_2005">
+            <div id="e136_2006"></div>
+            <div id="e136_2007"></div>
+            <span id="e136_2008">// FIT CHECK</span>
+          </div>
+          <div id="e136_2023">
+            <button
+              id="submit_button"
+              onClick={this.handleImageUpload}
+            ></button>
+          </div>
+          <span id="e136_2024">SUBMIT</span>
+          <div id="e134_0"></div>
+          <div id="e135_21"></div>
+          <div id="e158_1"></div>
+          <div id="e159_1"></div>
         </div>
       </div>
     );

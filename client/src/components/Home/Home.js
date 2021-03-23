@@ -29,10 +29,10 @@ class Home extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div class="e33_3">
-          <div class="e136_1980"></div>
-          <div class="e136_1983"></div>
-          <div class="e136_1982"></div>
+        <div id="e33_3">
+          <div id="e136_1980"></div>
+          <div id="e136_1983"></div>
+          <div id="e136_1982"></div>
           <Link
             to={{
               pathname: "/getinspired",
@@ -41,9 +41,9 @@ class Home extends Component {
               },
             }}
           >
-            <span class="e47_21">// GET INSPIRED</span>
+            <span id="e47_21">// GET INSPIRED</span>
           </Link>
-          <span class="e136_1975">// COMMUNITY</span>
+          <span id="e136_1975">// COMMUNITY</span>
           <Link
             to={{
               pathname: "/getadvice",
@@ -52,17 +52,17 @@ class Home extends Component {
               },
             }}
           >
-            <span class="e47_22">// GET ADVICE</span>
+            <span id="e47_22">// GET ADVICE</span>
           </Link>
-          <div class="e78_0"></div>
-          <div class="e82_14"></div>
-          <div class="e136_1974"></div>
-          <div class="e145_7"></div>
-          <div class="e145_8"></div>
-          <div class="e136_2000">
-            <div class="e136_2001"></div>
-            <div class="e136_2002"></div>
-            <span class="e136_2003">// FIT CHECK</span>
+          <div id="e78_0"></div>
+          <div id="e82_14"></div>
+          <div id="e136_1974"></div>
+          <div id="e145_7"></div>
+          <div id="e145_8"></div>
+          <div id="e136_2000">
+            <div id="e136_2001"></div>
+            <div id="e136_2002"></div>
+            <span id="e136_2003">// FIT CHECK</span>
           </div>
           <div id="e158_1"></div>
         </div>
