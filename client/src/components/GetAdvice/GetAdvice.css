@@ -419,11 +419,11 @@ input[type="file"] {
   width: 400px;
   height: 30px;
   position: absolute;
-  left: 555px;
+  left: 682px;
   top: 500px;
   font-family: Helvetica;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   font-style: italic;
   font-size: 18px;
   letter-spacing: 0;
@@ -459,10 +459,10 @@ input[type="file"] {
   width: 650px;
   height: 80px;
   position: absolute;
-  left: 670px;
+  left: 682px;
   top: 650px;
   font-family: Helvetica;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
   font-size: 18px;
   font-style: italic;
