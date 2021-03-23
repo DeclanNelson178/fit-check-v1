@@ -1,3 +1,6 @@
+// Model for uploaded files (images)
+// - contains {filePath, fileMimetype, owner}
+
 const mongoose = require("mongoose");
 const User = require('./userModel');
 

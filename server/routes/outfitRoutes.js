@@ -1,3 +1,6 @@
+// Route specific for transporting outfit files and information
+// Parses and sends data segments added from UI upload screen to MongoDB
+
 const File = require("../models/fileModel");
 const Outfit = require("../models/outfitModel");
 const router = require("express").Router();
@@ -24,6 +27,7 @@ router.post(
 
       const [rating, attributes] = await getRating(path);
 
+      // parse different tags associated with image
       tags = tags.split(",");
       const outfit = new Outfit({
         description: description,
@@ -35,6 +39,7 @@ router.post(
       });
       await outfit.save();
 
+      // send uploaded image file to MongoDB
       res.send(outfit);
     } catch (error) {
       console.log(error);

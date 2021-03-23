@@ -30,16 +30,9 @@ class Home extends Component {
     return (
       <BrowserRouter>
         <div id="e33_3">
-          <Link
-            to={{
-              pathname: "/getadvice",
-              state: {
-                jwt: this.state.jwt,
-              },
-            }}
-          >
-            <div id="e47_6"></div>
-          </Link>
+          <div id="e136_1980"></div>
+          <div id="e136_1983"></div>
+          <div id="e136_1982"></div>
           <Link
             to={{
               pathname: "/getinspired",
@@ -48,20 +41,9 @@ class Home extends Component {
               },
             }}
           >
-            <div id="e47_20"></div>
+            <span id="e47_21">// GET INSPIRED</span>
           </Link>
-          <Link
-            to={{
-              pathname: "/getinspired",
-              state: {
-                jwt: this.state.jwt,
-              },
-            }}
-          >
-            <span id="e47_21">
-              GET<br></br>INSPIRED
-            </span>
-          </Link>
+          <span id="e136_1975">// COMMUNITY</span>
           <Link
             to={{
               pathname: "/getadvice",
@@ -70,25 +52,19 @@ class Home extends Component {
               },
             }}
           >
-            <span id="e47_22">
-              GET<br></br>ADVICE
-            </span>
+            <span id="e47_22">// GET ADVICE</span>
           </Link>
-          <div id="e46_7">
-            <div id="e44_7"></div>
-            <div id="e44_3"></div>
-            <div id="e44_4"></div>
-            <span id="e46_6">“FIT CHECK”</span>
-            <div id="e48_1"></div>
-            <div id="e46_9">
-              <input
-                id="e46_9_input"
-                placeholder=" what u tryna wear?"
-                //value={}
-                onChange={this.handleSearch}
-              ></input>
-            </div>
+          <div id="e78_0"></div>
+          <div id="e82_14"></div>
+          <div id="e136_1974"></div>
+          <div id="e145_7"></div>
+          <div id="e145_8"></div>
+          <div id="e136_2000">
+            <div id="e136_2001"></div>
+            <div id="e136_2002"></div>
+            <span id="e136_2003">// FIT CHECK</span>
           </div>
+          <div id="e158_1"></div>
         </div>
         <Switch>
           <Route path="/getinspired" component={GetInspired} />

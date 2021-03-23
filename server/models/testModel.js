@@ -1,3 +1,6 @@
+// Temporary model used for establishing paths with MongoDB
+// **No longer implemented**
+
 const mongoose = require('mongoose');
 
 const testSchema = new mongoose.Schema({
