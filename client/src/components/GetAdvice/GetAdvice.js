@@ -19,6 +19,7 @@ class GetAdvice extends Component {
       description: "",
       file: null,
       filePreview: null,
+      rating: -1,
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
@@ -38,6 +39,7 @@ class GetAdvice extends Component {
       tags: e.target.value,
       file: oldFile,
       filePreview: oldFilePreview,
+      rating: -1,
     });
   }
 
@@ -53,6 +55,7 @@ class GetAdvice extends Component {
       description: e.target.value,
       file: oldFile,
       filePreview: oldFilePreview,
+      rating: -1,
     });
   }
 
@@ -72,6 +75,7 @@ class GetAdvice extends Component {
           type: "image/png",
         })
       ),
+      rating: -1,
     });
     document.getElementById("e63_34").style.opacity = 0;
   }
@@ -87,66 +91,129 @@ class GetAdvice extends Component {
     formData.append("description", this.state.description);
     // Request made to the backend api
     // Send formData object
-    console.log(
-      await axios.post("http://localhost:5000/outfits", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: this.state.jwt,
-        },
-      })
-    );
+    const res = await axios.post("http://localhost:5000/outfits", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: this.state.jwt,
+      },
+    });
+    const oldJwt = this.state.jwt;
+    const oldTags = this.state.tags;
+    const oldDescription = this.state.description;
+    const oldFile = this.state.file;
+    const oldFilePreview = this.state.filePreview;
+    await this.setState({
+      jwt: oldJwt,
+      tags: oldTags,
+      description: oldDescription,
+      file: oldFile,
+      filePreview: oldFilePreview,
+      rating: res.data.rating,
+    });
   }
 
   render() {
     return (
       <div>
-        <div id="e63_2">
-          <span id="e64_9">// GET ADVICE</span>
-          <span id="e63_63">// TAGS</span>
-          <span id="e63_64">// DESCRIPTION</span>
-          <div id="e64_123">
-            <img id="img_preview" src={this.state.filePreview} />
+        {this.state.rating != -1 ? (
+          <div>
+            <div id="e63_81">
+              <span id="e63_82">// RATING</span>
+              <span id="e63_83">// TAGS</span>
+              <div id="e63_83_2">{this.state.tags}</div>
+              <span id="e130_22">{this.state.rating}</span>
+              <span id="e63_84">// DESCRIPTION</span>
+              <div id="e63_84_2">{this.state.description}</div>
+              <div id="e63_86">
+                <img id="img_preview" src={this.state.filePreview} />
+              </div>
+              {this.state.rating >= 0 ? (
+                <div id="e130_40_black"></div>
+              ) : (
+                <div id="e130_40"></div>
+              )}
+              {this.state.rating >= 20 ? (
+                <div id="e130_42_black"></div>
+              ) : (
+                <div id="e130_42"></div>
+              )}
+              {this.state.rating >= 40 ? (
+                <div id="e130_43_black"></div>
+              ) : (
+                <div id="e130_43"></div>
+              )}
+              {this.state.rating >= 60 ? (
+                <div id="e130_39_black"></div>
+              ) : (
+                <div id="e130_39"></div>
+              )}
+              {this.state.rating >= 80 ? (
+                <div id="e130_41_black"></div>
+              ) : (
+                <div id="e130_41"></div>
+              )}
+              <div id="e135_139"></div>
+              <div id="e135_140"></div>
+              <div id="e136_2014">
+                <div id="e136_2015"></div>
+                <div id="e136_2016"></div>
+                <span id="e136_2017">// FIT CHECK</span>
+              </div>
+              <div id="e134_0"></div>
+              <div id="e135_21"></div>
+              <div id="e158_1"></div>
+              <div id="e159_1"></div>
+            </div>
           </div>
-          <div id="e63_34">
-            <label className="style-file-upload">
+        ) : (
+          <div id="e63_2">
+            <span id="e64_9">// GET ADVICE</span>
+            <span id="e63_63">// TAGS</span>
+            <span id="e63_64">// DESCRIPTION</span>
+            <div id="e64_123">
+              <img id="img_preview" src={this.state.filePreview} />
+            </div>
+            <div id="e63_34">
+              <label className="style-file-upload">
+                <input
+                  id="e63_36"
+                  type="file"
+                  onChange={this.onFileChange}
+                ></input>
+              </label>
+            </div>
+            <div id="e64_24">
               <input
-                id="e63_36"
-                type="file"
-                onChange={this.onFileChange}
+                id="tags_input"
+                value={this.state.tags}
+                onChange={this.handleTagChange}
               ></input>
-            </label>
+            </div>
+            <div id="e64_31">
+              <textarea
+                id="description_input"
+                value={this.state.description}
+                onChange={this.handleDescriptionChange}
+              ></textarea>
+            </div>
+            <div id="e136_2005">
+              <div id="e136_2006"></div>
+              <div id="e136_2007"></div>
+              <span id="e136_2008">// FIT CHECK</span>
+            </div>
+            <div id="e136_2023">
+              <button
+                id="submit_button"
+                onClick={this.handleImageUpload}
+              ></button>
+            </div>
+            <span id="e136_2024">SUBMIT</span>
+            <div id="e134_0"></div>
+            <div id="e135_21"></div>
+            <div id="e158_1"></div>
+            <div id="e159_1"></div>
           </div>
-          <div id="e64_24">
-            <input
-              id="tags_input"
-              value={this.state.tags}
-              onChange={this.handleTagChange}
-            ></input>
-          </div>
-          <div id="e64_31">
-            <textarea
-              id="description_input"
-              value={this.state.description}
-              onChange={this.handleDescriptionChange}
-            ></textarea>
-          </div>
-          <div id="e136_2005">
-            <div id="e136_2006"></div>
-            <div id="e136_2007"></div>
-            <span id="e136_2008">// FIT CHECK</span>
-          </div>
-          <div id="e136_2023">
-            <button
-              id="submit_button"
-              onClick={this.handleImageUpload}
-            ></button>
-          </div>
-          <span id="e136_2024">SUBMIT</span>
-          <div id="e134_0"></div>
-          <div id="e135_21"></div>
-          <div id="e158_1"></div>
-          <div id="e159_1"></div>
-        </div>
+        )}
       </div>
     );
   }
