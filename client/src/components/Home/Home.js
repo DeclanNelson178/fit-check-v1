@@ -43,7 +43,7 @@ class Home extends Component {
           >
             <span id="e47_21">// GET INSPIRED</span>
           </Link>
-          <span id="e136_1975">// COMMUNITY</span>
+          <span id="e136_1975">// GET CONNECTED</span>
           <Link
             to={{
               pathname: "/getadvice",
