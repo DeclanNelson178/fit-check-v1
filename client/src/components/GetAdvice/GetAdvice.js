@@ -18,6 +18,7 @@ class GetAdvice extends Component {
       tags: "",
       description: "",
       file: null,
+      filePreview: null,
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
@@ -30,11 +31,13 @@ class GetAdvice extends Component {
     const oldJwt = this.state.jwt;
     const oldDescription = this.state.description;
     const oldFile = this.state.file;
+    const oldFilePreview = this.state.filePreview;
     await this.setState({
       jwt: oldJwt,
       description: oldDescription,
       tags: e.target.value,
       file: oldFile,
+      filePreview: oldFilePreview,
     });
   }
 
@@ -43,11 +46,13 @@ class GetAdvice extends Component {
     const oldJwt = this.state.jwt;
     const oldTags = this.state.tags;
     const oldFile = this.state.file;
+    const oldFilePreview = this.state.filePreview;
     await this.setState({
       jwt: oldJwt,
       tags: oldTags,
       description: e.target.value,
       file: oldFile,
+      filePreview: oldFilePreview,
     });
   }
 
@@ -56,11 +61,13 @@ class GetAdvice extends Component {
     const oldJwt = this.state.jwt;
     const oldTags = this.state.tags;
     const oldDescription = this.state.description;
+    console.log(event.target.files[0]);
     await this.setState({
       jwt: oldJwt,
       tags: oldTags,
       description: oldDescription,
-      file: window.URL.createObjectURL(
+      file: event.target.files[0],
+      filePreview: window.URL.createObjectURL(
         new Blob([event.target.files[0]], {
           type: "image/png",
         })
@@ -73,21 +80,21 @@ class GetAdvice extends Component {
     event.preventDefault();
     // Create an object of formData
     var formData = new FormData();
-
     // Update the formData object
-    console.log(this.state);
+    console.log(this.state.file);
     formData.append("file", this.state.file);
     formData.append("tags", this.state.tags);
     formData.append("description", this.state.description);
-
     // Request made to the backend api
     // Send formData object
-    axios.post("http://localhost:5000/outfits", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: this.state.jwt,
-      },
-    });
+    console.log(
+      await axios.post("http://localhost:5000/outfits", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: this.state.jwt,
+        },
+      })
+    );
   }
 
   render() {
@@ -98,7 +105,7 @@ class GetAdvice extends Component {
           <span id="e63_63">// TAGS</span>
           <span id="e63_64">// DESCRIPTION</span>
           <div id="e64_123">
-            <img id="img_preview" src={this.state.file} />
+            <img id="img_preview" src={this.state.filePreview} />
           </div>
           <div id="e63_34">
             <label className="style-file-upload">
