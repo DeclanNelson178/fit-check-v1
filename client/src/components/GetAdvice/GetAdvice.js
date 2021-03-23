@@ -62,9 +62,9 @@ class GetAdvice extends Component {
       description: oldDescription,
       file: window.URL.createObjectURL(
         new Blob([event.target.files[0]], {
-        type: "image/png",
+          type: "image/png",
         })
-        ),
+      ),
     });
     document.getElementById("e63_34").style.opacity = 0;
   }
@@ -94,13 +94,11 @@ class GetAdvice extends Component {
     return (
       <div>
         <div id="e63_2">
-          <div id="e136_1971"></div>
-          <span  id="e64_9">// GET ADVICE</span>
-          <div id="e136_1970"></div>
-          <span  id="e63_63">// TAGS</span>
-          <span  id="e63_64">// DESCRIPTION</span>
-          <div id="e64_12">
-            <img id="img_preview" src={this.state.file}/>
+          <span id="e64_9">// GET ADVICE</span>
+          <span id="e63_63">// TAGS</span>
+          <span id="e63_64">// DESCRIPTION</span>
+          <div id="e64_123">
+            <img id="img_preview" src={this.state.file} />
           </div>
           <div id="e63_34">
             <label className="style-file-upload">
@@ -128,8 +126,7 @@ class GetAdvice extends Component {
           <div id="e136_2005">
             <div id="e136_2006"></div>
             <div id="e136_2007"></div>
-            <span  id="e136_2008">// FIT CHECK</span>
-            <div id="e136_2009"></div>
+            <span id="e136_2008">// FIT CHECK</span>
           </div>
           <div id="e136_2023">
             <button
@@ -137,14 +134,12 @@ class GetAdvice extends Component {
               onClick={this.handleImageUpload}
             ></button>
           </div>
-          <span  id="e136_2024">SUBMIT</span>
+          <span id="e136_2024">SUBMIT</span>
           <div id="e134_0"></div>
           <div id="e135_21"></div>
           <div id="e158_1"></div>
           <div id="e159_1"></div>
         </div>
-
-
       </div>
     );
   }

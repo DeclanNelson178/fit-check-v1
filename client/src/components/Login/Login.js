@@ -115,7 +115,7 @@ class Login extends Component {
                 <span id="e43_17">Don’t have an account? Sign up here!</span>
                 <button id="e43_17_button" onClick={this.handleSignUp}></button>
                 <div id="e43_18">
-                  <a className="icon-key"></a>
+                  <a className="icon-key"> </a>
                 </div>
               </div>
             </div>
