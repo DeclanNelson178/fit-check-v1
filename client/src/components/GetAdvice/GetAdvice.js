@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../GetAdvice/GetAdvice.css";
+import "./GetAdvice.css";
 
 /**
  * Get Advice component where users can upload images for fashion advice

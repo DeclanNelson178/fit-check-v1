@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import inspo from "../GetInspired/images/inspo.jpg";
-import "../GetInspired/GetInspired.css";
+import inspo from "./images/inspo.jpg";
+import "./GetInspired.css";
 
 /**
  * Get Inspired component where users can search the web for anything
