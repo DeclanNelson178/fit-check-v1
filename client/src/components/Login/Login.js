@@ -32,7 +32,7 @@ class Login extends Component {
   // with the user's inputted email and password
   handleLogin() {
     axios
-      .post("http://localhost:5000/auth/signin", {
+      .post("/auth/signin", {
         email: this.state.username,
         password: this.state.password,
       })

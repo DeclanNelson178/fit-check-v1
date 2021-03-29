@@ -91,7 +91,7 @@ class GetAdvice extends Component {
     formData.append("description", this.state.description);
     // Request made to the backend api
     // Send formData object
-    const res = await axios.post("http://localhost:5000/outfits", formData, {
+    const res = await axios.post("/outfits", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: this.state.jwt,
