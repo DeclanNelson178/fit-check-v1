@@ -31,10 +31,20 @@ class GetInspired extends Component {
     });
   }
 
+  async handleLoading() {
+    console.log("loading");
+    document.getElementById("loading-screen").style.opacity = 1;
+
+    setTimeout(function(){
+      document.getElementById("loading-screen").style.opacity = 0;
+    }, 2000);
+  }
+
   async scrapeGoogleSearch(e) {
     if (e.key !== "Enter") {
       return;
     } else {
+      this.handleLoading();
       const auth = this.state.jwt;
       const search = this.state.searchQuery;
       await this.setState({
@@ -82,6 +92,9 @@ class GetInspired extends Component {
     return (
       <div>
         <div id="e112_15">
+          <div id="loading-screen">
+            <span id="loading">// LOADING</span>
+          </div>
           <span id="e112_16">// GET INSPIRED</span>
           <img
             hidden={this.state.searched}
