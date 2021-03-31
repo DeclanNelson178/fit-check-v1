@@ -126,11 +126,14 @@
   top: 0;
   height: 100%;
   width: 300%;
-  animation: slideshow 10s linear infinite;
+  animation: slideshow 15s linear infinite;
+  transform: translate3d(0, 0, 0);
 }
 @keyframes slideshow {
   0%    { left: 0; }
-  100%  { left: -200%; }
+  100% { 
+    -webkit-transform: translateX(-200%);  
+  }
 }
 #e145_7 {
   transform: rotate(50.000001298001074deg);
