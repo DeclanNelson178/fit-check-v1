@@ -56,7 +56,9 @@ class Home extends Component {
           </Link>
           <div id="e78_0"></div>
           <div id="e82_14"></div>
-          <div id="e136_1974"></div>
+          <div className="slideshow">
+            <div className="images"></div>
+          </div>
           <div id="e145_7"></div>
           <div id="e145_8"></div>
           <div id="e136_2000">

@@ -110,16 +110,27 @@
   left: 0px;
   top: 427px;
 }
-#e136_1974 {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.slideshow {
+  position: relative;
+  overflow: hidden;
   width: 597px;
   height: 427px;
   position: absolute;
   left: 421px;
   top: 300px;
-  background-image: url("../Home/images/image_16.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+.images {
+  background: url(images/advice_collage.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  animation: slideshow 10s linear infinite;
+}
+@keyframes slideshow {
+  0%    { left: 0; }
+  100%  { left: -200%; }
 }
 #e145_7 {
   transform: rotate(50.000001298001074deg);
