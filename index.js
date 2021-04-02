@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require('path')
 require("dotenv").config();
-
 
 // set up express
 
@@ -10,11 +10,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// heroku requirements
+
+app.use(express.static(path.join(__dirname, "client", "build")))
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+
 const PORT = process.env.PORT || 5000;
 console.log("Starting server.");
 app.listen(PORT, () => console.log(`Server started on port ${PORT}.`));
 
 // set up routes
+
 app.use('/tests', require('./routes/testRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/outfits', require('./routes/outfitRoutes'));

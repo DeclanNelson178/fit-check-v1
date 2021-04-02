@@ -30,7 +30,7 @@ class SignUp extends Component {
   // Axios is used to handle requests to backend endpoints --> Here we use a POST request
   // with the user's inputted name, email and password
   handleSignUp() {
-    axios.post("http://localhost:5000/auth/signup", {
+    axios.post("/auth/signup", {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
