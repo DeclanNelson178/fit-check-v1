@@ -25,6 +25,10 @@ const outfitSchema = new Schema({
     type: Array,
     required: true,
   },
+  categories: {
+    type: Array,
+    required: true
+  },
   img: {
     type: mongoose.Schema.Types.ObjectId,
     ref: File,

@@ -25,7 +25,7 @@ router.post(
       });
       await file.save();
 
-      const [rating, attributes] = await getRating(path);
+      const [rating, attributes, categories] = await getRating(path);
 
       // parse different tags associated with image
       tags = tags.split(",");
@@ -36,6 +36,7 @@ router.post(
         owner: req.user.id,
         rating: rating,
         attributes: attributes,
+        categories: categories
       });
       await outfit.save();
 
