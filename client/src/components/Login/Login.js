@@ -119,7 +119,10 @@ class Login extends Component {
                 </div>
               </div>
             </div>
-            <div id="e135_23"></div>
+            <div className="home-slideshow">
+              <div className="home-images">
+            </div>
+            </div>
             <div id="e134_0"></div>
             <div id="e135_21"></div>
             <div id="e158_1"></div>
