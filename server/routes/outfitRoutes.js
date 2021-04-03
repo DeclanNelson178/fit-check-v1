@@ -7,6 +7,7 @@ const router = require("express").Router();
 const { upload } = require("../middleware/uploadFile");
 const jwtAuth = require("../middleware/jwtAuth");
 const path = require("path");
+const { getRecommendation } = require('../helpers/recommendation.js');
 
 const getRating = require("../helpers/ai/rating");
 
@@ -101,5 +102,22 @@ router.get("/image/:outfitId", jwtAuth, async (req, res) => {
     res.status(400).send("Error while getting outfit image. Try again later.");
   }
 });
+
+router.get('/recommendation/:outfitId', jwtAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const outfitId = req.params.outfitId;
+    const outfit = await Outfit.findOne({
+      _id: outfitId,
+      owner: userId,
+    }).populate("img");
+
+    const rec = getRecommendation(outfit);
+  } catch {
+
+  }
+});
+
+
 
 module.exports = router;
