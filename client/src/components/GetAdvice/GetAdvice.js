@@ -97,6 +97,7 @@ class GetAdvice extends Component {
         Authorization: this.state.jwt,
       },
     });
+    console.log(res.data);
     const oldJwt = this.state.jwt;
     const oldTags = this.state.tags;
     const oldDescription = this.state.description;

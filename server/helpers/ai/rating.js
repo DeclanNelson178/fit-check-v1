@@ -17,6 +17,7 @@ const getRating = async (filePath) => {
     { name: 'chiffon', probability: 0.04324888437986374 },
     { name: 'stripe', probability: 0.04276769608259201 }
   ]
+  let categories = [];
   try {
     // request to flask server with file path
     const formData = new FormData();
@@ -32,6 +33,7 @@ const getRating = async (filePath) => {
     }).then(res => {
       const category = res.data['categories'][0]['name'];
       attr = res.data['attributes'];
+      categories = res.data['categories'];
       const graded_attr = json[category.toString()];
       
       let givenTotal = 0;
@@ -54,7 +56,7 @@ const getRating = async (filePath) => {
     console.log(err);
     console.log('AI Engine not online, using random score');
   }
-  return [score, attr];
+  return [score, attr, categories];
 }
 
 module.exports = getRating;
