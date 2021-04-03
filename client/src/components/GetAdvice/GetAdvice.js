@@ -85,7 +85,6 @@ class GetAdvice extends Component {
     // Create an object of formData
     var formData = new FormData();
     // Update the formData object
-    console.log(this.state.file);
     formData.append("file", this.state.file);
     formData.append("tags", this.state.tags);
     formData.append("description", this.state.description);
