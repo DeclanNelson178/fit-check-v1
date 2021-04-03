@@ -35,7 +35,7 @@ class GetInspired extends Component {
     console.log("loading");
     document.getElementById("loading-screen").style.opacity = 1;
 
-    setTimeout(function(){
+    setTimeout(function () {
       document.getElementById("loading-screen").style.opacity = 0;
     }, 2000);
   }

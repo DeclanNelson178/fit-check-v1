@@ -85,7 +85,6 @@ class GetAdvice extends Component {
     // Create an object of formData
     var formData = new FormData();
     // Update the formData object
-    console.log(this.state.file);
     formData.append("file", this.state.file);
     formData.append("tags", this.state.tags);
     formData.append("description", this.state.description);
@@ -97,6 +96,7 @@ class GetAdvice extends Component {
         Authorization: this.state.jwt,
       },
     });
+    console.log(res.data);
     const oldJwt = this.state.jwt;
     const oldTags = this.state.tags;
     const oldDescription = this.state.description;
