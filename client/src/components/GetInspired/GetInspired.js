@@ -17,7 +17,49 @@ class GetInspired extends Component {
       jwt: this.props.location.state.jwt,
       searchQuery: "",
       searched: false,
-      images: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      images: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      idxs: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.scrapeGoogleSearch = this.scrapeGoogleSearch.bind(this);
@@ -38,6 +80,15 @@ class GetInspired extends Component {
     setTimeout(function () {
       document.getElementById("loading-screen").style.opacity = 0;
     }, 2000);
+  }
+
+  async shuffle(o) {
+    for (
+      var j, x, i = o.length;
+      i;
+      j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
+    );
+    return o;
   }
 
   async scrapeGoogleSearch(e) {
@@ -79,13 +130,20 @@ class GetInspired extends Component {
     const auth = this.state.jwt;
     const search = this.state.searchQuery;
     const searched = true;
+    var indexes = [];
+    for (var i = 0; i < newImages.length; i++) {
+      indexes.push(i);
+    }
+    var idxNews = await this.shuffle(indexes);
+    console.log(newImages);
+    console.log(idxNews);
     await this.setState({
       jwt: auth,
       searchQuery: search,
       searched: searched,
       images: newImages,
+      idxs: idxNews,
     });
-    console.log(newImages);
   }
 
   render() {
@@ -107,7 +165,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img1"
-              src={this.state.images[0].url}
+              src={this.state.images[this.state.idxs[0]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_21">
@@ -115,7 +173,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img2"
-              src={this.state.images[1].url}
+              src={this.state.images[this.state.idxs[1]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_22">
@@ -123,7 +181,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img3"
-              src={this.state.images[2].url}
+              src={this.state.images[this.state.idxs[2]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_23">
@@ -131,7 +189,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img4"
-              src={this.state.images[3].url}
+              src={this.state.images[this.state.idxs[3]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_39">
@@ -139,7 +197,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img5"
-              src={this.state.images[4].url}
+              src={this.state.images[this.state.idxs[4]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_40">
@@ -147,7 +205,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img6"
-              src={this.state.images[5].url}
+              src={this.state.images[this.state.idxs[5]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_41">
@@ -155,7 +213,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img7"
-              src={this.state.images[6].url}
+              src={this.state.images[this.state.idxs[6]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_42">
@@ -163,7 +221,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img8"
-              src={this.state.images[7].url}
+              src={this.state.images[this.state.idxs[7]].url}
             ></img>
           </div>
           <div id="e112_50"></div>
