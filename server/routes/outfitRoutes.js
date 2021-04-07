@@ -114,15 +114,7 @@ router.get('/recommendation/:outfitId', jwtAuth, async (req, res) => {
     }).populate("img");
     //TODO: Replace gender with user preference
     const rec = await getRecommendation(outfit, 'men');
-    let resVal = 'For an outfit with the following categories: \n'
-    for (const category of outfit['categories']) {
-    	resVal+= category.name +'\n'
-    }
-    resVal += 'We recommend the following products: \n'
-    for (const image of rec) {
-    	resVal += image +'\n'
-    }
-    res.status(200).send(resVal)
+    res.status(200).send(rec)
   } catch(error) {
   	console.log(error);
   }
