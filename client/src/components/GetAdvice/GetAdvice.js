@@ -20,6 +20,7 @@ class GetAdvice extends Component {
       file: null,
       filePreview: null,
       rating: -1,
+      recommendation: null,
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
@@ -40,6 +41,7 @@ class GetAdvice extends Component {
       file: oldFile,
       filePreview: oldFilePreview,
       rating: -1,
+      recommendation: null,
     });
   }
 
@@ -56,6 +58,7 @@ class GetAdvice extends Component {
       file: oldFile,
       filePreview: oldFilePreview,
       rating: -1,
+      recommendation: null,
     });
   }
 
@@ -76,6 +79,7 @@ class GetAdvice extends Component {
         })
       ),
       rating: -1,
+      recommendation: null,
     });
     document.getElementById("e63_34").style.opacity = 0;
   }
@@ -96,7 +100,13 @@ class GetAdvice extends Component {
         Authorization: this.state.jwt,
       },
     });
-    console.log(res.data);
+    var recommendUrl =
+      "http://localhost:5000/outfits/recommendation/" + res.data._id;
+    const recommendedOutfits = await axios.get(recommendUrl, {
+      headers: {
+        Authorization: this.state.jwt,
+      },
+    });
     const oldJwt = this.state.jwt;
     const oldTags = this.state.tags;
     const oldDescription = this.state.description;
@@ -109,6 +119,7 @@ class GetAdvice extends Component {
       file: oldFile,
       filePreview: oldFilePreview,
       rating: res.data.rating,
+      recommendation: recommendedOutfits.data,
     });
   }
 
@@ -119,11 +130,7 @@ class GetAdvice extends Component {
           <div>
             <div id="e63_81">
               <span id="e63_82">// RATING</span>
-              <span id="e63_83">// TAGS</span>
-              <div id="e63_83_2">{this.state.tags}</div>
               <span id="e130_22">{this.state.rating}</span>
-              <span id="e63_84">// DESCRIPTION</span>
-              <div id="e63_84_2">{this.state.description}</div>
               <div id="e63_86">
                 <img id="img_preview" src={this.state.filePreview} />
               </div>
@@ -152,6 +159,34 @@ class GetAdvice extends Component {
               ) : (
                 <div id="e130_41"></div>
               )}
+              <span id="e205_65">// SUGGESTED FITS</span>
+              <div id="e205_44">
+                <img
+                  hidden={!this.state.rating == -1}
+                  id="rec_img"
+                  alt="img8"
+                  src={this.state.recommendation[0]}
+                  href={this.state.recommendation[0]}
+                ></img>
+              </div>
+              <div id="e205_45">
+                <img
+                  hidden={!this.state.rating == -1}
+                  id="rec_img"
+                  alt="img8"
+                  src={this.state.recommendation[1]}
+                  href={this.state.recommendation[1]}
+                ></img>
+              </div>
+              <div id="e215_0">
+                <img
+                  hidden={!this.state.rating == -1}
+                  id="rec_img"
+                  alt="img8"
+                  src={this.state.recommendation[2]}
+                  href={this.state.recommendation[2]}
+                ></img>
+              </div>
               <div id="e135_139"></div>
               <div id="e135_140"></div>
               <div id="e136_2014">

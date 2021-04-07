@@ -8,7 +8,7 @@ const { upload } = require("../middleware/uploadFile");
 const jwtAuth = require("../middleware/jwtAuth");
 const path = require("path");
 
-const getRecommendation = require('../helpers/ai/recommendation.js');
+const getRecommendation = require("../helpers/ai/recommendation.js");
 const getRating = require("../helpers/ai/rating");
 
 router.post(
@@ -37,7 +37,7 @@ router.post(
         owner: req.user.id,
         rating: rating,
         attributes: attributes,
-        categories: categories
+        categories: categories,
       });
       await outfit.save();
 
@@ -104,7 +104,7 @@ router.get("/image/:outfitId", jwtAuth, async (req, res) => {
   }
 });
 
-router.get('/recommendation/:outfitId', jwtAuth, async (req, res) => {
+router.get("/recommendation/:outfitId", jwtAuth, async (req, res) => {
   try {
     const userId = req.user.id;
     const outfitId = req.params.outfitId;
@@ -113,21 +113,11 @@ router.get('/recommendation/:outfitId', jwtAuth, async (req, res) => {
       owner: userId,
     }).populate("img");
     //TODO: Replace gender with user preference
-    const rec = await getRecommendation(outfit, 'men');
-    let resVal = 'For an outfit with the following categories: \n'
-    for (const category of outfit['categories']) {
-    	resVal+= category.name +'\n'
-    }
-    resVal += 'We recommend the following products: \n'
-    for (const image of rec) {
-    	resVal += image +'\n'
-    }
-    res.status(200).send(resVal)
-  } catch(error) {
-  	console.log(error);
+    const rec = await getRecommendation(outfit, "men");
+    res.status(200).send(rec);
+  } catch (error) {
+    console.log(error);
   }
 });
-
-
 
 module.exports = router;
