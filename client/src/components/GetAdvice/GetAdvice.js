@@ -161,31 +161,34 @@ class GetAdvice extends Component {
               )}
               <span id="e205_65">// SUGGESTED FITS</span>
               <div id="e205_44">
-                <img
-                  hidden={!this.state.rating == -1}
-                  id="rec_img"
-                  alt="img8"
-                  src={this.state.recommendation[0]}
-                  href={this.state.recommendation[0]}
-                ></img>
+                <a href={this.state.recommendation[0]}>
+                  <img
+                    hidden={!this.state.rating == -1}
+                    id="rec_img"
+                    alt="img8"
+                    src={this.state.recommendation[0]}
+                  ></img>
+                </a>
               </div>
               <div id="e205_45">
-                <img
-                  hidden={!this.state.rating == -1}
-                  id="rec_img"
-                  alt="img8"
-                  src={this.state.recommendation[1]}
-                  href={this.state.recommendation[1]}
-                ></img>
+                <a href={this.state.recommendation[1]}>
+                  <img
+                    hidden={!this.state.rating == -1}
+                    id="rec_img"
+                    alt="img8"
+                    src={this.state.recommendation[1]}
+                  ></img>
+                </a>
               </div>
               <div id="e215_0">
-                <img
-                  hidden={!this.state.rating == -1}
-                  id="rec_img"
-                  alt="img8"
-                  src={this.state.recommendation[2]}
-                  href={this.state.recommendation[2]}
-                ></img>
+                <a href={this.state.recommendation[2]}>
+                  <img
+                    hidden={!this.state.rating == -1}
+                    id="rec_img"
+                    alt="img8"
+                    src={this.state.recommendation[2]}
+                  ></img>
+                </a>
               </div>
               <div id="e135_139"></div>
               <div id="e135_140"></div>
