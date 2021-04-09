@@ -40,7 +40,7 @@ class GetConnected extends Component {
         <div id="e205_62"></div>
         <div id="e205_50">
           <input
-            id="tags_input"
+            id="tags_input_gc"
             value={this.state.friendEmail}
             onChange={this.handleFriendEmailChange}
           ></input>
