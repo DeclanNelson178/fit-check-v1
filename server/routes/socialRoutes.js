@@ -6,21 +6,22 @@ const User = require('../models/userModel');
 const jwtAuth = require("../middleware/jwtAuth");
 
 /**
- * Params: friendId : string : id of friend
+ * Params: friendEmail : string : email of friend
  */
 router.put(
   "/follow",
   jwtAuth,
   async (req, res) => {
     try {
-      const { friendId } = req.body;
+      const { friendEmail } = req.body;
       const userId = req.user.id;
+      let friend = await User.findOne({ email: friendEmail });
 
       const user = await User.findByIdAndUpdate({ _id: userId },
-        { $push: { following: friendId }}, { new: true })
+        { $push: { following: friend.id }}, { new: true })
         .populate('following');
-      const friend = await User.findByIdAndUpdate({ _id: friendId }, 
-        { $push: { followers: friendId }}, { new: true })
+      friend = await User.findByIdAndUpdate({ _id: friendId }, 
+        { $push: { followers: friend.id }}, { new: true })
         .populate('followers');
 
       res.send({ user, friend });
