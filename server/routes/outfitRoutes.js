@@ -16,7 +16,6 @@ router.post(
   [jwtAuth, upload.single("file")],
   async (req, res) => {
     try {
-      console.log(req.body);
       let { tags, description } = req.body;
       const { path, mimetype } = req.file;
       const file = new File({
@@ -40,6 +39,8 @@ router.post(
         categories: categories,
       });
       await outfit.save();
+      await User.findByIdAndUpdate({ _id: req.user.id }, { $push: { outfits: outfit }}, { new: true });
+
 
       // send uploaded image file to MongoDB
       res.send(outfit);
