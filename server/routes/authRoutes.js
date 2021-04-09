@@ -29,6 +29,8 @@ router.post("/signup", async (req, res) => {
     name,
     email,
     password,
+    following: [],
+    followers: [],
   });
 
   // used to encode user password and not store explicitly
