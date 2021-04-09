@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import GetAdvice from "../GetAdvice/GetAdvice";
+import GetConnected from "../GetConnected/GetConnected";
 import GetInspired from "../GetInspired/GetInspired";
 import "./Home.css";
 
@@ -43,7 +44,16 @@ class Home extends Component {
           >
             <span id="e47_21">// GET INSPIRED</span>
           </Link>
-          <span id="e136_1975">// GET CONNECTED</span>
+          <Link
+            to={{
+              pathname: "/getconnected",
+              state: {
+                jwt: this.state.jwt,
+              },
+            }}
+          >
+            <span id="e136_1975">// GET CONNECTED</span>
+          </Link>
           <Link
             to={{
               pathname: "/getadvice",
@@ -71,6 +81,7 @@ class Home extends Component {
         <Switch>
           <Route path="/getinspired" component={GetInspired} />
           <Route path="/getadvice" component={GetAdvice} />
+          <Route path="/getconnected" component={GetConnected} />
         </Switch>
       </BrowserRouter>
     );

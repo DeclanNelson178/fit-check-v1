@@ -704,4 +704,5 @@ input[type="file"] {
   position: relative;
   left: 0px;
   top: 0px;
+  opacity: 1;
 }
