@@ -104,13 +104,20 @@ class GetInspired extends Component {
         searched: true,
       });
     }
+    var pageNums = ["1", "2"];
+    var pageNum = "1";
+    if (Math.random() < 0.5) {
+      pageNum = pageNums[0];
+    } else {
+      pageNum = pageNums[1];
+    }
+    console.log(pageNum);
     const options = {
       method: "GET",
       url:
         "https://custom-search.p.rapidapi.com/api/search/CustomImageSearchAPIV2",
       params: {
         q: this.state.searchQuery,
-        pageNumber: "1",
         searchEngineId: "8090045467032532905",
       },
       headers: {
