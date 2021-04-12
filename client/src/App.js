@@ -3,6 +3,8 @@ import "./App.css";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 
+import photo from './files/1614218796313_outfit1.jpg';
+
 /**
  * Main top level component that handles the first end-user request to Login. On login success, routes to Home Screen.
  * State consists of JWT auth token which is sent upon login and passed to requisite components.
@@ -17,6 +19,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       jwt: "",
+      image: null,
     };
     this.update = this.update.bind(this);
   }
@@ -29,9 +32,13 @@ class App extends React.Component {
     console.log(this.state);
   }
 
+
   render() {
+    const images = require.context('./files/', true);
+    const loadImage = imageName => (images(`./${imageName}`).default);
     return (
       <div className="App">
+        <img src={loadImage('1614218796313_outfit1.jpg')} alt="text"/>
         {this.state.jwt.length <= 0 ? (
           <Login data={this.update.bind(this)} />
         ) : (

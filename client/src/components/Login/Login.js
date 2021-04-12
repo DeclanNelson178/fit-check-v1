@@ -66,6 +66,7 @@ class Login extends Component {
 
   // Updates dynamically when user inputs password
   async handlePasswordChange(e) {
+    console.log('password')
     const oldUsername = this.state.username;
     await this.setState({
       username: oldUsername,
