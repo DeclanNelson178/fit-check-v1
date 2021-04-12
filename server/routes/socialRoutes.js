@@ -2,7 +2,8 @@
 // Parses and sends data segments added from UI upload screen to MongoDB
 
 const router = require("express").Router();
-const User = require('../models/userModel');
+const User = require("../models/userModel");
+const Outfit = require("../models/outfitModel");
 const jwtAuth = require("../middleware/jwtAuth");
 
 /**
@@ -16,14 +17,19 @@ router.put(
       const { friendEmail } = req.body;
       const userId = req.user.id;
       let friend = await User.findOne({ email: friendEmail });
-
-      const user = await User.findByIdAndUpdate({ _id: userId },
-        { $push: { following: friend.id }}, { new: true })
-        .populate('following');
-      friend = await User.findByIdAndUpdate({ _id: friendId }, 
-        { $push: { followers: friend.id }}, { new: true })
-        .populate('followers');
-
+      const checkUserAlreadyAdded = await User.findById({
+        _id: userId,
+      });
+      const user = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $push: { following: friend._id } },
+        { new: true }
+      ).populate("following");
+      friend = await User.findByIdAndUpdate(
+        { _id: friend._id },
+        { $push: { followers: userId } },
+        { new: true }
+      ).populate("followers");
       res.send({ user, friend });
     } catch (error) {
       console.log(error);
@@ -44,7 +50,7 @@ router.get(
   async (req, res) => {
     try {
       const userId = req.user.id;
-      const user = await User.find({ _id: userId }).populate('followers');
+      const user = await User.find({ _id: userId }).populate("followers");
       res.send(user);
     } catch (error) {
       console.log(error);
@@ -65,7 +71,7 @@ router.get(
   async (req, res) => {
     try {
       const userId = req.user.id;
-      const user = await User.find({ _id: userId }).populate('following');
+      const user = await User.find({ _id: userId }).populate("following");
       res.send(user);
     } catch (error) {
       console.log(error);
@@ -86,17 +92,18 @@ router.get(
   async (req, res) => {
     try {
       const userId = req.user.id;
-
-      const user = await User.findOne({ _id: userId }).populate('following');
+      const user = await User.findOne({ _id: userId }).populate("following");
       const retArr = [];
-
-      user.following.forEach(friend => {
-        retArr.push({
-          friend: friend._id,
-          outfits: friend.outfits
-        });
+      const followingFriends = [];
+      user.following.forEach((friend) => {
+        followingFriends.push(friend._id);
       });
-
+      for (var i = 0; i < followingFriends.length; i++) {
+        const res = await Outfit.findOne({
+          owner: followingFriends[i],
+        }).populate("img");
+        retArr.push(res);
+      }
       res.send(retArr);
     } catch (error) {
       console.log(error);
@@ -110,6 +117,5 @@ router.get(
     }
   }
 );
-
 
 module.exports = router;

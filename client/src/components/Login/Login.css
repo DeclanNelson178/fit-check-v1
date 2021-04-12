@@ -55,7 +55,7 @@
   width: 80px;
   height: 30px;
   position: absolute;
-  left: 168px;
+  left: 178px;
   top: 296px;
   font-family: Helvetica Neue;
   text-align: center;
@@ -289,8 +289,12 @@
   transform: translate3d(0, 0, 0);
 }
 @keyframes home-slideshow {
-  0%    { top: 0; }
-  100%  { top: -200%; }
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -200%;
+  }
 }
 #e158_1 {
   background-color: rgba(255, 253.93750101327896, 253.93750101327896, 1);
