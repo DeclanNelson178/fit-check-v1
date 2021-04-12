@@ -16,38 +16,45 @@ class GetConnected extends Component {
     this.state = {
       jwt: this.props.location.state.jwt,
       friendEmail: "",
-      yourFits: [],
-      friendFits: [],
+      yourFits: [""],
+      friendFits: [""],
     };
     this.handleFriendEmailChange = this.handleFriendEmailChange.bind(this);
     this.handleAddFriend = this.handleAddFriend.bind(this);
     this.renderFriendFits = this.renderFriendFits.bind(this);
     this.renderYourFits = this.renderYourFits.bind(this);
+    this.handleLoading = this.handleLoading.bind(this);
   }
 
-  async componentDidMount() {
-    await this.renderFriendFits();
-    await this.renderYourFits();
-    console.log(this.state);
-    // ADD CODE HERE EMILY
+  async handleLoading() {
+    console.log("loading");
+    document.getElementById("loading-screen").style.opacity = 1;
+
+    setTimeout(function () {
+      document.getElementById("loading-screen").style.opacity = 0;
+    }, 2000);
   }
 
-  async renderFriendFits() {
-    const res = await axios.get(
-      "http://localhost:5000/social/display_friends",
-      {
-        headers: {
-          Authorization: this.state.jwt,
-        },
-      }
-    );
+  componentDidMount() {
+    // await this.handleLoading();
+    this.renderFriendFits();
+    this.renderYourFits();
+  }
+
+  renderFriendFits() {
+    const res = axios.get("http://localhost:5000/social/display_friends", {
+      headers: {
+        Authorization: this.state.jwt,
+      },
+    });
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
-      imgsArray.push(res.data[i].img);
+      var len = res.data[i].img.filePath.length;
+      imgsArray.push(res.data[i].img.filePath.substring(9, len));
     }
     const oldJwt = this.state.jwt;
     const oldYourFits = this.state.yourFits;
-    await this.setState({
+    this.setState({
       jwt: oldJwt,
       friendEmail: "",
       yourFits: oldYourFits,
@@ -55,19 +62,20 @@ class GetConnected extends Component {
     });
   }
 
-  async renderYourFits() {
-    const res = await axios.get("http://localhost:5000/outfits", {
+  renderYourFits() {
+    const res = axios.get("http://localhost:5000/outfits", {
       headers: {
         Authorization: this.state.jwt,
       },
     });
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
-      imgsArray.push(res.data[i].img);
+      var len = res.data[i].img.filePath.length;
+      imgsArray.push(res.data[i].img.filePath.substring(9, len));
     }
     const oldJwt = this.state.jwt;
     const oldFriendFits = this.state.friendFits;
-    await this.setState({
+    this.setState({
       jwt: oldJwt,
       friendEmail: "",
       yourFits: imgsArray,
@@ -89,6 +97,7 @@ class GetConnected extends Component {
 
   async handleAddFriend(e) {
     if (e.key !== "Enter") {
+      console.log(this.state);
       return;
     } else {
       const res = await axios.put(
@@ -107,12 +116,16 @@ class GetConnected extends Component {
   }
 
   render() {
+    const images = require.context("../../files/", true);
+    const loadImage = (imageName) => images(`./${imageName}`).default;
     return (
       <div id="e204_7">
         <span id="e205_8">// GET CONNECTED</span>
         <span id="e205_22">// ADD FRIENDS</span>
         <span id="e205_60">// COMMUNITY</span>
-        <div id="e205_12"></div>
+        <div id="e205_12">
+          <img src={loadImage(this.state.yourFits[0])} alt="text" />
+        </div>
         <div id="e205_18"></div>
         <span id="e205_61">// YOUR FITS</span>
         <div id="e205_62"></div>
