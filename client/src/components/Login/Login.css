@@ -312,3 +312,16 @@
   position: absolute;
   z-index: 1;
 }
+#incorrect-pass {
+  color: red;
+  opacity: 1;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 172px;
+  top: 500px;
+  font-family: Helvetica Neue;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0;
+}

@@ -119,6 +119,10 @@ class GetConnected extends Component {
           },
         }
       );
+      document.getElementById("friend_added").innerHTML = "now following " + this.state.friendEmail;
+      setTimeout(function () {
+        document.getElementById("friend_added").innerHTML = "";
+      }, 3000);
     }
   }
 
@@ -164,6 +168,7 @@ class GetConnected extends Component {
             onKeyDown={this.handleAddFriend}
           ></input>
         </div>
+        <div id="friend_added"></div>
         <div id="e205_64"></div>
         <div id="e136_2000">
           <div id="e136_2001"></div>

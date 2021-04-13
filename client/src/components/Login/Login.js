@@ -40,6 +40,12 @@ class Login extends Component {
         if (res.status === 200) {
           this.props.data(res.data.token);
         }
+      })
+      .catch((err) => {
+        document.getElementById("incorrect-pass").innerHTML = "INCORRECT PASSWORD";
+        setTimeout(function () {
+          document.getElementById("incorrect-pass").innerHTML = "";
+        }, 3000);
       });
   }
 
@@ -66,7 +72,6 @@ class Login extends Component {
 
   // Updates dynamically when user inputs password
   async handlePasswordChange(e) {
-    console.log("password");
     const oldUsername = this.state.username;
     await this.setState({
       username: oldUsername,
@@ -94,6 +99,7 @@ class Login extends Component {
                   ></input>
                 </div>
                 <span id="e43_7">Password</span>
+                <div id="incorrect-pass"></div>
                 <span id="e43_8">Username/Email</span>
                 <div id="e43_10">
                   <input
