@@ -24,12 +24,12 @@ const getRecommendation = async (outfit, gender) => {
     }
     cate_images.forEach((image) => recommendations.add(image));
   }
-  shuffleArray(recommendations);
-
+  recommendations = Array.from(recommendations)
+  shuffleArray(recommendations)
   if (recommendations.length > num_of_reqs) {
     recommendations = recommendations.slice(0, num_of_reqs);
   }
-  return Array.from(recommendations);
-};
+  return recommendations
+}
 
 module.exports = getRecommendation;
