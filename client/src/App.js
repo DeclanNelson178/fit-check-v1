@@ -31,11 +31,8 @@ class App extends React.Component {
   }
 
   render() {
-    const images = require.context("./files/", true);
-    const loadImage = (imageName) => images(`./${imageName}`).default;
     return (
       <div className="App">
-        {/* <img src={loadImage("1614218796313_outfit1.jpg")} alt="text" /> */}
         {this.state.jwt.length <= 0 ? (
           <Login data={this.update.bind(this)} />
         ) : (

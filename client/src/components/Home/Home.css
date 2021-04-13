@@ -129,8 +129,12 @@
   transform: translate3d(0, 0, 0);
 }
 @keyframes slideshow {
-  0%    { left: 0; }
-  100%  { left: -200%; }
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -200%;
+  }
 }
 #e145_7 {
   transform: rotate(50.000001298001074deg);

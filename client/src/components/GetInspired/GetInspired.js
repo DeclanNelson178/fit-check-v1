@@ -17,48 +17,7 @@ class GetInspired extends Component {
       jwt: this.props.location.state.jwt,
       searchQuery: "",
       searched: false,
-      images: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-      ],
+      images: ["", "", "", "", "", "", "", "", ""],
       idxs: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     };
     this.handleSearch = this.handleSearch.bind(this);
@@ -231,16 +190,6 @@ class GetInspired extends Component {
               src={this.state.images[this.state.idxs[7]].url}
             ></img>
           </div>
-          <div id="e112_50"></div>
-          <div id="e112_52"></div>
-          <div id="e112_54"></div>
-          <div id="e112_60"></div>
-          <div id="e112_62"></div>
-          <div id="e112_64"></div>
-          <div id="e112_66"></div>
-          <div id="e112_68"></div>
-          <div id="e112_70"></div>
-          <div id="e112_73"></div>
           <span id="e114_21" hidden={!this.state.searched}>
             8 search results for
           </span>
