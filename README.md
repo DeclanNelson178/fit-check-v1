@@ -16,7 +16,7 @@
 
 #### First Time Setup
 1. NOTE: This installation process requires Conda installed on your machine. If you do not have this requirement, install Conda before proceeding
-2. Download the dependencies.zip file linked in the repo (this may take some time) and place the extracted folder into the AI folder
+2. Download the dependencies.zip file provided separately (this may take some time) and place the extracted folder into the AI folder
 3. Next, navigate into the AI folder by running `cd AI`
 4. Now, run `conda create --name fitcheck`
 5. Then, run `conda activate fitcheck` (or `source activate fitcheck`) to enter the virtual env
