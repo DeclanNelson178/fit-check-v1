@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../GetConnected/GetConnected.css";
+import { Zoom } from "react-slideshow-image";
 
 /**
  * Get Connected component where users can see their outfits,
@@ -35,11 +36,11 @@ class GetConnected extends Component {
     }, 2000);
   }
 
-  componentDidMount() {
-    // await this.handleLoading();
-    this.renderFriendFits();
-    this.renderYourFits();
-  }
+  // componentDidMount() {
+  //   // await this.handleLoading();
+  //   this.renderFriendFits();
+  //   this.renderYourFits();
+  // }
 
   renderFriendFits() {
     const res = axios.get("http://localhost:5000/social/display_friends", {
@@ -116,15 +117,29 @@ class GetConnected extends Component {
   }
 
   render() {
-    const images = require.context("../../files/", true);
-    const loadImage = (imageName) => images(`./${imageName}`).default;
+    const slideshow_imgs = ["images/1.jpg", "images/2.jpg", "images/3.jpg"];
+    const zoomOutProperties = {
+      duration: 5000,
+      transitionDuration: 500,
+      infinite: true,
+      indicators: true,
+      scale: 0.4,
+      arrows: true
+    };
+    // const images = require.context("../../files/", true);
+    // const loadImage = (imageName) => images(`./${imageName}`).default;
     return (
       <div id="e204_7">
         <span id="e205_8">// GET CONNECTED</span>
         <span id="e205_22">// ADD FRIENDS</span>
         <span id="e205_60">// COMMUNITY</span>
         <div id="e205_12">
-          <img src={loadImage(this.state.yourFits[0])} alt="text" />
+          {/* <Zoom {...zoomOutProperties}>
+            {slideshow_imgs.map((each, index) => (
+              <img key={index} style={{ width: "100%" }} src={each} />
+            ))}
+          </Zoom> */}
+          <img src="images/break.png" alt="text" />
         </div>
         <div id="e205_18"></div>
         <span id="e205_61">// YOUR FITS</span>
