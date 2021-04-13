@@ -131,7 +131,7 @@ class GetConnected extends Component {
       infinite: true,
       indicators: true,
       scale: 0.4,
-      arrows: true
+      arrows: true,
     };
     // const images = require.context("../../files/", true);
     // const loadImage = (imageName) => images(`./${imageName}`).default;
@@ -143,7 +143,7 @@ class GetConnected extends Component {
         <div id="e205_12">
           <Zoom {...zoomOutProperties}>
             {friend_imgs.map((each, index) => (
-              <img key={index} style={{ width: "100%" }} src={each} />
+              <img key={index} id="ss-img" src={each} />
             ))}
           </Zoom>
         </div>
@@ -152,7 +152,7 @@ class GetConnected extends Component {
         <div id="e205_62">
           <Zoom {...zoomOutProperties}>
             {user_imgs.map((each, index) => (
-              <img key={index} style={{ width: "100%" }} src={each} />
+              <img key={index} id="ss-img" src={each} />
             ))}
           </Zoom>
         </div>

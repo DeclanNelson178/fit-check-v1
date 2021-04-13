@@ -210,7 +210,6 @@
   font-size: 52px;
   letter-spacing: 0;
 }
-
 #tags_input_gc {
   font-family: Helvetica Neue;
   font-style: italic;
@@ -220,6 +219,13 @@
   border: 0ch;
   width: 99%;
   height: 97%;
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+#ss-img {
+  width: 400px;
+  height: 425px;
   position: relative;
   left: 0px;
   top: 0px;
