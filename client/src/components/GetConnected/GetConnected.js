@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../GetConnected/GetConnected.css";
 import { Zoom } from "react-slideshow-image";
+import friend1 from "./images/1.jpg";
+import friend2 from "./images/2.jpg";
+import friend3 from "./images/3.jpg";
+import user1 from "./images/user1.jpg";
+import user2 from "./images/user2.jpg";
+import user3 from "./images/user3.jpg";
 
 /**
  * Get Connected component where users can see their outfits,
@@ -117,9 +123,10 @@ class GetConnected extends Component {
   }
 
   render() {
-    const slideshow_imgs = ["images/1.jpg", "images/2.jpg", "images/3.jpg"];
+    const friend_imgs = [friend1, friend2, friend3];
+    const user_imgs = [user1, user2, user3];
     const zoomOutProperties = {
-      duration: 5000,
+      duration: 2500,
       transitionDuration: 500,
       infinite: true,
       indicators: true,
@@ -134,16 +141,21 @@ class GetConnected extends Component {
         <span id="e205_22">// ADD FRIENDS</span>
         <span id="e205_60">// COMMUNITY</span>
         <div id="e205_12">
-          {/* <Zoom {...zoomOutProperties}>
-            {slideshow_imgs.map((each, index) => (
+          <Zoom {...zoomOutProperties}>
+            {friend_imgs.map((each, index) => (
               <img key={index} style={{ width: "100%" }} src={each} />
             ))}
-          </Zoom> */}
-          <img src="images/break.png" alt="text" />
+          </Zoom>
         </div>
         <div id="e205_18"></div>
         <span id="e205_61">// YOUR FITS</span>
-        <div id="e205_62"></div>
+        <div id="e205_62">
+          <Zoom {...zoomOutProperties}>
+            {user_imgs.map((each, index) => (
+              <img key={index} style={{ width: "100%" }} src={each} />
+            ))}
+          </Zoom>
+        </div>
         <div id="e205_50">
           <input
             id="tags_input_gc"
