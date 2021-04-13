@@ -8,7 +8,7 @@ const { upload } = require("../middleware/uploadFile");
 const jwtAuth = require("../middleware/jwtAuth");
 const path = require("path");
 
-const getRecommendation = require('../helpers/ai/recommendation.js');
+const getRecommendation = require("../helpers/ai/recommendation.js");
 const getRating = require("../helpers/ai/rating");
 
 router.post(
@@ -16,7 +16,6 @@ router.post(
   [jwtAuth, upload.single("file")],
   async (req, res) => {
     try {
-      console.log(req.body);
       let { tags, description } = req.body;
       const { path, mimetype } = req.file;
       const file = new File({
@@ -37,9 +36,11 @@ router.post(
         owner: req.user.id,
         rating: rating,
         attributes: attributes,
-        categories: categories
+        categories: categories,
       });
       await outfit.save();
+      await User.findByIdAndUpdate({ _id: req.user.id }, { $push: { outfits: outfit }}, { new: true });
+
 
       // send uploaded image file to MongoDB
       res.send(outfit);
@@ -104,7 +105,7 @@ router.get("/image/:outfitId", jwtAuth, async (req, res) => {
   }
 });
 
-router.get('/recommendation/:outfitId', jwtAuth, async (req, res) => {
+router.get("/recommendation/:outfitId", jwtAuth, async (req, res) => {
   try {
     const userId = req.user.id;
     const outfitId = req.params.outfitId;
@@ -119,7 +120,5 @@ router.get('/recommendation/:outfitId', jwtAuth, async (req, res) => {
   	console.log(error);
   }
 });
-
-
 
 module.exports = router;

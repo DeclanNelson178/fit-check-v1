@@ -17,6 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       jwt: "",
+      image: null,
     };
     this.update = this.update.bind(this);
   }

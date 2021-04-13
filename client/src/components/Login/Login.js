@@ -66,6 +66,7 @@ class Login extends Component {
 
   // Updates dynamically when user inputs password
   async handlePasswordChange(e) {
+    console.log("password");
     const oldUsername = this.state.username;
     await this.setState({
       username: oldUsername,
@@ -93,7 +94,7 @@ class Login extends Component {
                   ></input>
                 </div>
                 <span id="e43_7">Password</span>
-                <span id="e43_8">Email</span>
+                <span id="e43_8">Username/Email</span>
                 <div id="e43_10">
                   <input
                     id="e43_9_input"
@@ -119,7 +120,9 @@ class Login extends Component {
                 </div>
               </div>
             </div>
-            <div id="e135_23"></div>
+            <div className="home-slideshow">
+              <div className="home-images"></div>
+            </div>
             <div id="e134_0"></div>
             <div id="e135_21"></div>
             <div id="e158_1"></div>

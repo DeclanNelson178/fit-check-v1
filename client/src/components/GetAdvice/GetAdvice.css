@@ -434,7 +434,7 @@ input[type="file"] {
   height: 157px;
   position: absolute;
   left: 920px;
-  top: 160px;
+  top: 120px;
   font-family: Helvetica;
   text-align: center;
   font-weight: bold;
@@ -483,7 +483,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 720px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -493,7 +493,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 720px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -503,7 +503,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 829px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -513,7 +513,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 829px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -523,7 +523,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 937px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -533,7 +533,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 937px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -543,7 +543,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 1046px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -553,7 +553,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 1046px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -563,7 +563,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 1154px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -573,7 +573,7 @@ input[type="file"] {
   height: 100px;
   position: absolute;
   left: 1154px;
-  top: 300px;
+  top: 260px;
   background-image: url(images/star2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -650,4 +650,59 @@ input[type="file"] {
   font-weight: bold;
   font-size: 52px;
   letter-spacing: 0;
+}
+#e205_65 {
+  color: rgba(0, 0, 0, 1);
+  width: 527px;
+  height: 50px;
+  position: absolute;
+  left: 725px;
+  top: 405px;
+  font-family: Helvetica;
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+#e205_44 {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
+  background-color: rgba(255, 255, 255, 1);
+  opacity: 1;
+  width: 235px;
+  height: 299px;
+  position: absolute;
+  left: 572px;
+  top: 469px;
+}
+
+#e205_45 {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
+  background-color: rgba(255, 255, 255, 1);
+  width: 235px;
+  height: 299px;
+  opacity: 1;
+  position: absolute;
+  left: 853px;
+  top: 469px;
+}
+
+#e215_0 {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
+  background-color: rgba(255, 255, 255, 1);
+  width: 235px;
+  height: 299px;
+  opacity: 1;
+  position: absolute;
+  left: 1134px;
+  top: 469px;
+}
+
+#rec_img {
+  width: 235px;
+  height: 299px;
+  position: relative;
+  left: 0px;
+  top: 0px;
+  opacity: 1;
 }

@@ -18,6 +18,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  outfits: [{ type: mongoose.Schema.ObjectId, ref: 'Outfit' }],
 });
 
-module.exports = User = mongoose.model('user', userSchema)
+module.exports = User = mongoose.model('User', userSchema)

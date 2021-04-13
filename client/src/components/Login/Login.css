@@ -55,7 +55,7 @@
   width: 80px;
   height: 30px;
   position: absolute;
-  left: 168px;
+  left: 178px;
   top: 296px;
   font-family: Helvetica Neue;
   text-align: center;
@@ -270,16 +270,31 @@
   width: 700px;
   height: 70px;
 }
-#e135_23 {
+.home-slideshow {
+  position: relative;
+  overflow: hidden;
+  top: 120px;
+  left: 1050px;
+  width: 192px;
+  height: 635px;
+}
+.home-images {
+  background: url(images/advice_collage2.png);
   position: absolute;
-  top: 170px;
-  left: 850px;
-  width: 400px;
-  height: 400px;
-  background-image: url("../Login/images/login.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-height: 100vh;
+  left: 0;
+  top: 0;
+  height: 400%;
+  width: 100%;
+  animation: home-slideshow 10s linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes home-slideshow {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -200%;
+  }
 }
 #e158_1 {
   background-color: rgba(255, 253.93750101327896, 253.93750101327896, 1);

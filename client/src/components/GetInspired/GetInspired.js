@@ -17,7 +17,8 @@ class GetInspired extends Component {
       jwt: this.props.location.state.jwt,
       searchQuery: "",
       searched: false,
-      images: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      images: ["", "", "", "", "", "", "", "", ""],
+      idxs: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.scrapeGoogleSearch = this.scrapeGoogleSearch.bind(this);
@@ -31,10 +32,29 @@ class GetInspired extends Component {
     });
   }
 
+  async handleLoading() {
+    console.log("loading");
+    document.getElementById("loading-screen").style.opacity = 1;
+
+    setTimeout(function () {
+      document.getElementById("loading-screen").style.opacity = 0;
+    }, 2000);
+  }
+
+  async shuffle(o) {
+    for (
+      var j, x, i = o.length;
+      i;
+      j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
+    );
+    return o;
+  }
+
   async scrapeGoogleSearch(e) {
     if (e.key !== "Enter") {
       return;
     } else {
+      this.handleLoading();
       const auth = this.state.jwt;
       const search = this.state.searchQuery;
       await this.setState({
@@ -43,13 +63,20 @@ class GetInspired extends Component {
         searched: true,
       });
     }
+    var pageNums = ["1", "2"];
+    var pageNum = "1";
+    if (Math.random() < 0.5) {
+      pageNum = pageNums[0];
+    } else {
+      pageNum = pageNums[1];
+    }
+    console.log(pageNum);
     const options = {
       method: "GET",
       url:
         "https://custom-search.p.rapidapi.com/api/search/CustomImageSearchAPIV2",
       params: {
         q: this.state.searchQuery,
-        pageNumber: "1",
         searchEngineId: "8090045467032532905",
       },
       headers: {
@@ -69,19 +96,29 @@ class GetInspired extends Component {
     const auth = this.state.jwt;
     const search = this.state.searchQuery;
     const searched = true;
+    var indexes = [];
+    for (var i = 0; i < newImages.length; i++) {
+      indexes.push(i);
+    }
+    var idxNews = await this.shuffle(indexes);
+    console.log(newImages);
+    console.log(idxNews);
     await this.setState({
       jwt: auth,
       searchQuery: search,
       searched: searched,
       images: newImages,
+      idxs: idxNews,
     });
-    console.log(newImages);
   }
 
   render() {
     return (
       <div>
         <div id="e112_15">
+          <div id="loading-screen">
+            <span id="loading">// LOADING</span>
+          </div>
           <span id="e112_16">// GET INSPIRED</span>
           <img
             hidden={this.state.searched}
@@ -94,7 +131,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img1"
-              src={this.state.images[0].url}
+              src={this.state.images[this.state.idxs[0]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_21">
@@ -102,7 +139,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img2"
-              src={this.state.images[1].url}
+              src={this.state.images[this.state.idxs[1]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_22">
@@ -110,7 +147,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img3"
-              src={this.state.images[2].url}
+              src={this.state.images[this.state.idxs[2]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_23">
@@ -118,7 +155,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img4"
-              src={this.state.images[3].url}
+              src={this.state.images[this.state.idxs[3]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_39">
@@ -126,7 +163,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img5"
-              src={this.state.images[4].url}
+              src={this.state.images[this.state.idxs[4]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_40">
@@ -134,7 +171,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img6"
-              src={this.state.images[5].url}
+              src={this.state.images[this.state.idxs[5]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_41">
@@ -142,7 +179,7 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img7"
-              src={this.state.images[6].url}
+              src={this.state.images[this.state.idxs[6]].url}
             ></img>
           </div>
           <div hidden={!this.state.searched} id="e112_42">
@@ -150,19 +187,9 @@ class GetInspired extends Component {
               hidden={!this.state.searched}
               id="e112_20_img"
               alt="img8"
-              src={this.state.images[7].url}
+              src={this.state.images[this.state.idxs[7]].url}
             ></img>
           </div>
-          <div id="e112_50"></div>
-          <div id="e112_52"></div>
-          <div id="e112_54"></div>
-          <div id="e112_60"></div>
-          <div id="e112_62"></div>
-          <div id="e112_64"></div>
-          <div id="e112_66"></div>
-          <div id="e112_68"></div>
-          <div id="e112_70"></div>
-          <div id="e112_73"></div>
           <span id="e114_21" hidden={!this.state.searched}>
             8 search results for
           </span>
