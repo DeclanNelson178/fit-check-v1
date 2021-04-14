@@ -52,7 +52,6 @@ class GetConnected extends Component {
       const fileName = filePath[filePath.length - 1];
       imgsArray.push(fileName);
     }
-    console.log(imgsArray);
     const oldJwt = this.state.jwt;
     const oldYourFits = this.state.yourFits;
     this.setState({
@@ -100,7 +99,6 @@ class GetConnected extends Component {
 
   async handleAddFriend(e) {
     if (e.key !== "Enter") {
-      console.log(this.state);
       return;
     } else {
       const res = await axios.put(
@@ -138,7 +136,6 @@ class GetConnected extends Component {
     const loadImage = (imageName) => images(`./${imageName}`).default;
     return (
       <div id="e204_7">
-        {/* {this.state.friendFits.length === 0 ? <></> : <img src={loadImage(this.state.friendFits[0])} />} */}
         <span id="e205_8">// GET CONNECTED</span>
         <span id="e205_22">// ADD FRIENDS</span>
         <span id="e205_60">// COMMUNITY</span>
