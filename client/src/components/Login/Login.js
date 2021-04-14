@@ -42,7 +42,8 @@ class Login extends Component {
         }
       })
       .catch((err) => {
-        document.getElementById("incorrect-pass").innerHTML = "INCORRECT PASSWORD";
+        document.getElementById("incorrect-pass").innerHTML =
+          "INCORRECT USERNAME/PASSWORD";
         setTimeout(function () {
           document.getElementById("incorrect-pass").innerHTML = "";
         }, 3000);
