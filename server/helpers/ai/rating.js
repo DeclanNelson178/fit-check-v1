@@ -3,6 +3,16 @@ const FormData = require("form-data");
 var json = require("../../data/category_avg.json");
 const math = require("mathjs");
 
+
+/**
+ * 
+ * @param {*} filePath: image to send to AI microservice
+ * @returns an array [score, attribute, category]
+ * 
+ * Upload an outfit and return the perceived attributes and category, as well as calculate an outfit
+ * rating.
+ * If the AI microservice is not running, return hardcoded fields
+ */
 const getRating = async (filePath) => {
   var score = Math.floor(Math.random() * 101);
   var attr = [
