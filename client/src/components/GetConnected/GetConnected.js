@@ -23,8 +23,8 @@ class GetConnected extends Component {
     this.state = {
       jwt: this.props.location.state.jwt,
       friendEmail: "",
-      yourFits: [""],
-      friendFits: [""],
+      yourFits: [],
+      friendFits: [],
     };
     this.handleFriendEmailChange = this.handleFriendEmailChange.bind(this);
     this.handleAddFriend = this.handleAddFriend.bind(this);
@@ -42,14 +42,14 @@ class GetConnected extends Component {
     }, 2000);
   }
 
-  // componentDidMount() {
-  //   // await this.handleLoading();
-  //   this.renderFriendFits();
-  //   this.renderYourFits();
-  // }
+  async componentDidMount() {
+    // await this.handleLoading();
+    await this.renderFriendFits();
+    await this.renderYourFits();
+  }
 
-  renderFriendFits() {
-    const res = axios.get("http://localhost:5000/social/display_friends", {
+  async renderFriendFits() {
+    const res = await axios.get("http://localhost:5000/social/display_friends", {
       headers: {
         Authorization: this.state.jwt,
       },
@@ -57,8 +57,11 @@ class GetConnected extends Component {
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
       var len = res.data[i].img.filePath.length;
-      imgsArray.push(res.data[i].img.filePath.substring(9, len));
+      const filePath = res.data[i].img.filePath.split('/');
+      const fileName = filePath[filePath.length - 1];
+      imgsArray.push(fileName);
     }
+
     const oldJwt = this.state.jwt;
     const oldYourFits = this.state.yourFits;
     this.setState({
@@ -69,8 +72,8 @@ class GetConnected extends Component {
     });
   }
 
-  renderYourFits() {
-    const res = axios.get("http://localhost:5000/outfits", {
+  async renderYourFits() {
+    const res = await axios.get("http://localhost:5000/outfits", {
       headers: {
         Authorization: this.state.jwt,
       },
@@ -78,7 +81,9 @@ class GetConnected extends Component {
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
       var len = res.data[i].img.filePath.length;
-      imgsArray.push(res.data[i].img.filePath.substring(9, len));
+      const filePath = res.data[i].img.filePath.split('/');
+      const fileName = filePath[filePath.length - 1];
+      imgsArray.push(fileName);
     }
     const oldJwt = this.state.jwt;
     const oldFriendFits = this.state.friendFits;
@@ -137,28 +142,51 @@ class GetConnected extends Component {
       scale: 0.4,
       arrows: true,
     };
-    // const images = require.context("../../files/", true);
-    // const loadImage = (imageName) => images(`./${imageName}`).default;
+    const images = require.context("../../files/", true);
+    const loadImage = (imageName) => images(`./${imageName}`).default;
     return (
       <div id="e204_7">
+        {/* {this.state.friendFits.length === 0 ? <></> : <img src={loadImage(this.state.friendFits[0])} />} */}
         <span id="e205_8">// GET CONNECTED</span>
         <span id="e205_22">// ADD FRIENDS</span>
         <span id="e205_60">// COMMUNITY</span>
         <div id="e205_12">
-          <Zoom {...zoomOutProperties}>
-            {friend_imgs.map((each, index) => (
-              <img key={index} id="ss-img" src={each} />
-            ))}
-          </Zoom>
+          {this.state.friendFits.length  === 0 ? 
+            <Zoom {...zoomOutProperties}>
+              {friend_imgs.map((each, index) => (
+                <img key={index} id="ss-img" src={each} />
+              ))}
+            </Zoom> : 
+            <Zoom {...zoomOutProperties}>
+            {this.state.friendFits.map((each, index) => {
+              const img = loadImage(each);
+              return (
+                <img key={index} id="ss-img" src={img} />
+              )
+              })
+            }
+          </Zoom> 
+          }
         </div>
         <div id="e205_18"></div>
         <span id="e205_61">// YOUR FITS</span>
         <div id="e205_62">
-          <Zoom {...zoomOutProperties}>
-            {user_imgs.map((each, index) => (
-              <img key={index} id="ss-img" src={each} />
-            ))}
-          </Zoom>
+        {this.state.yourFits.length  === 0 ? 
+            <Zoom {...zoomOutProperties}>
+              {friend_imgs.map((each, index) => (
+                <img key={index} id="ss-img" src={each} />
+              ))}
+            </Zoom> : 
+            <Zoom {...zoomOutProperties}>
+            {this.state.yourFits.map((each, index) => {
+              const img = loadImage(each);
+              return (
+                <img key={index} id="ss-img" src={img} />
+              )
+              })
+            }
+          </Zoom> 
+          }
         </div>
         <div id="e205_50">
           <input
