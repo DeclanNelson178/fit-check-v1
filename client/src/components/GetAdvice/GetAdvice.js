@@ -161,32 +161,32 @@ class GetAdvice extends Component {
               )}
               <span id="e205_65">// SUGGESTED FITS</span>
               <div id="e205_44">
-                <a href={this.state.recommendation[0]}>
+                <a href={this.state.recommendation[0].product}>
                   <img
                     hidden={!this.state.rating == -1}
                     id="rec_img"
                     alt="img8"
-                    src={this.state.recommendation[0]}
+                    src={this.state.recommendation[0].model_image}
                   ></img>
                 </a>
               </div>
               <div id="e205_45">
-                <a href={this.state.recommendation[1]}>
+                <a href={this.state.recommendation[1].product}>
                   <img
                     hidden={!this.state.rating == -1}
                     id="rec_img"
                     alt="img8"
-                    src={this.state.recommendation[1]}
+                    src={this.state.recommendation[1].model_image}
                   ></img>
                 </a>
               </div>
               <div id="e215_0">
-                <a href={this.state.recommendation[2]}>
+                <a href={this.state.recommendation[2].product}>
                   <img
                     hidden={!this.state.rating == -1}
                     id="rec_img"
                     alt="img8"
-                    src={this.state.recommendation[2]}
+                    src={this.state.recommendation[2].model_image}
                   ></img>
                 </a>
               </div>

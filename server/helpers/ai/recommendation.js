@@ -17,12 +17,12 @@ const getRecommendation = async (outfit, gender) => {
   topK_categories = categories.slice(0, k_categories);
   recommendations = new Set();
   for (category of topK_categories) {
-    cate_images = clothing_lookup[category.name];
-    shuffleArray(cate_images);
-    if (cate_images.length > num_of_reqs) {
-      cate_images = cate_images.slice(0, num_of_reqs);
+    cate_product= clothing_lookup[category.name];
+    shuffleArray(cate_product);
+    if (cate_product.length > num_of_reqs) {
+      cate_product = cate_product.slice(0, num_of_reqs);
     }
-    cate_images.forEach((image) => recommendations.add(image));
+    cate_product.forEach((image) => recommendations.add(image));
   }
   recommendations = Array.from(recommendations)
   shuffleArray(recommendations)
