@@ -23,41 +23,34 @@ class GetConnected extends Component {
     this.state = {
       jwt: this.props.location.state.jwt,
       friendEmail: "",
-      yourFits: [""],
-      friendFits: [""],
+      yourFits: [],
+      friendFits: [],
     };
     this.handleFriendEmailChange = this.handleFriendEmailChange.bind(this);
     this.handleAddFriend = this.handleAddFriend.bind(this);
     this.renderFriendFits = this.renderFriendFits.bind(this);
     this.renderYourFits = this.renderYourFits.bind(this);
-    this.handleLoading = this.handleLoading.bind(this);
   }
 
-  async handleLoading() {
-    console.log("loading");
-    document.getElementById("loading-screen").style.opacity = 1;
-
-    setTimeout(function () {
-      document.getElementById("loading-screen").style.opacity = 0;
-    }, 2000);
+  async componentDidMount() {
+    await this.renderFriendFits();
+    await this.renderYourFits();
   }
 
-  // componentDidMount() {
-  //   // await this.handleLoading();
-  //   this.renderFriendFits();
-  //   this.renderYourFits();
-  // }
-
-  renderFriendFits() {
-    const res = axios.get("http://localhost:5000/social/display_friends", {
-      headers: {
-        Authorization: this.state.jwt,
-      },
-    });
+  async renderFriendFits() {
+    const res = await axios.get(
+      "http://localhost:5000/social/display_friends",
+      {
+        headers: {
+          Authorization: this.state.jwt,
+        },
+      }
+    );
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
-      var len = res.data[i].img.filePath.length;
-      imgsArray.push(res.data[i].img.filePath.substring(9, len));
+      const filePath = res.data[i].img.filePath.split("/");
+      const fileName = filePath[filePath.length - 1];
+      imgsArray.push(fileName);
     }
     const oldJwt = this.state.jwt;
     const oldYourFits = this.state.yourFits;
@@ -69,8 +62,8 @@ class GetConnected extends Component {
     });
   }
 
-  renderYourFits() {
-    const res = axios.get("http://localhost:5000/outfits", {
+  async renderYourFits() {
+    const res = await axios.get("http://localhost:5000/outfits", {
       headers: {
         Authorization: this.state.jwt,
       },
@@ -78,7 +71,9 @@ class GetConnected extends Component {
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
       var len = res.data[i].img.filePath.length;
-      imgsArray.push(res.data[i].img.filePath.substring(9, len));
+      const filePath = res.data[i].img.filePath.split("/");
+      const fileName = filePath[filePath.length - 1];
+      imgsArray.push(fileName);
     }
     const oldJwt = this.state.jwt;
     const oldFriendFits = this.state.friendFits;
@@ -104,7 +99,6 @@ class GetConnected extends Component {
 
   async handleAddFriend(e) {
     if (e.key !== "Enter") {
-      console.log(this.state);
       return;
     } else {
       const res = await axios.put(
@@ -119,6 +113,11 @@ class GetConnected extends Component {
           },
         }
       );
+      document.getElementById("friend_added").innerHTML =
+        "now following " + this.state.friendEmail;
+      setTimeout(function () {
+        document.getElementById("friend_added").innerHTML = "";
+      }, 3000);
     }
   }
 
@@ -133,28 +132,46 @@ class GetConnected extends Component {
       scale: 0.4,
       arrows: true,
     };
-    // const images = require.context("../../files/", true);
-    // const loadImage = (imageName) => images(`./${imageName}`).default;
+    const images = require.context("../../files/", true);
+    const loadImage = (imageName) => images(`./${imageName}`).default;
     return (
       <div id="e204_7">
         <span id="e205_8">// GET CONNECTED</span>
         <span id="e205_22">// ADD FRIENDS</span>
         <span id="e205_60">// COMMUNITY</span>
         <div id="e205_12">
-          <Zoom {...zoomOutProperties}>
-            {friend_imgs.map((each, index) => (
-              <img key={index} id="ss-img" src={each} />
-            ))}
-          </Zoom>
+          {this.state.friendFits.length === 0 ? (
+            <Zoom {...zoomOutProperties}>
+              {friend_imgs.map((each, index) => (
+                <img key={index} id="ss-img" src={each} />
+              ))}
+            </Zoom>
+          ) : (
+            <Zoom {...zoomOutProperties}>
+              {this.state.friendFits.map((each, index) => {
+                const img = loadImage(each);
+                return <img key={index} id="ss-img" src={img} />;
+              })}
+            </Zoom>
+          )}
         </div>
         <div id="e205_18"></div>
         <span id="e205_61">// YOUR FITS</span>
         <div id="e205_62">
-          <Zoom {...zoomOutProperties}>
-            {user_imgs.map((each, index) => (
-              <img key={index} id="ss-img" src={each} />
-            ))}
-          </Zoom>
+          {this.state.yourFits.length === 0 ? (
+            <Zoom {...zoomOutProperties}>
+              {friend_imgs.map((each, index) => (
+                <img key={index} id="ss-img" src={each} />
+              ))}
+            </Zoom>
+          ) : (
+            <Zoom {...zoomOutProperties}>
+              {this.state.yourFits.map((each, index) => {
+                const img = loadImage(each);
+                return <img key={index} id="ss-img" src={img} />;
+              })}
+            </Zoom>
+          )}
         </div>
         <div id="e205_50">
           <input
@@ -164,6 +181,7 @@ class GetConnected extends Component {
             onKeyDown={this.handleAddFriend}
           ></input>
         </div>
+        <div id="friend_added"></div>
         <div id="e205_64"></div>
         <div id="e136_2000">
           <div id="e136_2001"></div>
