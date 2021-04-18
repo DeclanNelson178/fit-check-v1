@@ -99,10 +99,12 @@ router.get(
         followingFriends.push(friend._id);
       });
       for (var i = 0; i < followingFriends.length; i++) {
-        const res = await Outfit.findOne({
+        const res = await Outfit.find({
           owner: followingFriends[i],
         }).populate("img");
-        retArr.push(res);
+        for (var j = 0; j < res.length; j++) {
+          retArr.push(res[j]);
+        }
       }
       res.send(retArr);
     } catch (error) {
