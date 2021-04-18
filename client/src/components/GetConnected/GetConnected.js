@@ -46,7 +46,6 @@ class GetConnected extends Component {
         },
       }
     );
-    console.log(res);
     var imgsArray = [];
     for (var i = 0; i < res.data.length; i++) {
       const filePath = res.data[i].img.filePath.split("/");
