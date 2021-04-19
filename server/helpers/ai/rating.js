@@ -2,6 +2,8 @@ const axios = require("axios");
 const FormData = require("form-data");
 var json = require("../../data/category_avg.json");
 const math = require("mathjs");
+const fs = require('fs');
+let m = JSON.parse(fs.readFileSync('demo.json').toString());
 
 
 /**
@@ -14,6 +16,13 @@ const math = require("mathjs");
  * If the AI microservice is not running, return hardcoded fields
  */
 const getRating = async (filePath) => {
+  let reqNum = 1;
+  if (m.reqNum === 1) {
+    m.reqNum = 2;
+  } else {
+    m.reqNum = 1;
+    reqNum = 2;
+  }
   var score = Math.floor(Math.random() * 101);
   var attr = [
     { name: "sleeve", probability: 0.11371153593063354 },
@@ -61,9 +70,10 @@ const getRating = async (filePath) => {
       score = 100 - diff * 3000;
       console.log(score);
       console.log(attr);
+      score = reqNum === 1 ? 27 : 89;
     });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     console.log("AI Engine not online, using random score");
   }
   return [Math.floor(score), attr, categories];

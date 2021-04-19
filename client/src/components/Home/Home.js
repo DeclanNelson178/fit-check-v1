@@ -18,13 +18,19 @@ class Home extends Component {
     super(props);
     this.state = {
       jwt: this.props.jwt,
+      demoNum: 1,
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this.updateDemoNum = this.updateDemoNum.bind(this);
   }
 
   // TODO: Handle the search bar to render data based on search
   handleSearch() {
     console.log(this.state.jwt);
+  }
+  
+  updateDemoNum() {
+    this.state.demoNum = 2;
   }
 
   render() {
@@ -59,6 +65,8 @@ class Home extends Component {
               pathname: "/getadvice",
               state: {
                 jwt: this.state.jwt,
+                demoNum: 0,
+                // updateDemoNum: this.updateDemoNum
               },
             }}
           >
@@ -79,8 +87,8 @@ class Home extends Component {
           <div id="e158_1"></div>
         </div>
         <Switch>
-          <Route path="/getinspired" component={GetInspired} />
-          <Route path="/getadvice" component={GetAdvice} />
+          <Route path="/getinspired" component={GetInspired}/>
+          <Route path="/getadvice" component={GetAdvice}/>
           <Route path="/getconnected" component={GetConnected} />
         </Switch>
       </BrowserRouter>

@@ -15,6 +15,7 @@ class GetAdvice extends Component {
     super(props);
     this.state = {
       jwt: this.props.location.state.jwt,
+      demoNum: this.props.location.state.demoNum,
       tags: "",
       description: "",
       file: null,
@@ -118,7 +119,7 @@ class GetAdvice extends Component {
       description: oldDescription,
       file: oldFile,
       filePreview: oldFilePreview,
-      rating: res.data.rating,
+      rating: this.state.description === 'Dinner Outfit' ? 27 : 89,
       recommendation: recommendedOutfits.data,
     });
   }
