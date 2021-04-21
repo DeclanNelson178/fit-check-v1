@@ -1,6 +1,8 @@
 # FitCheckV1 - Team 0311
 
-## How to Run the App Locally
+## Release Notes
+
+## Install Guide
 
 ### Frontend
 1. Navigate to the client directory by running `cd client`
@@ -29,3 +31,6 @@
 #### Run Each Time
 1. `conda activate fitcheck`
 2. `python app.py`
+
+## Troubleshooting
+
