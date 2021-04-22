@@ -8,6 +8,7 @@
 ### Known bugs/limitations
 1. Non-fashion-related queries on the GetInspired page can lead to unexpected application behavior
 2. Tags and descriptions on the GetAdvice page are required fields, else the rating of the outfit will not show
+3. ADD ANY MORE BUGS AND LIMITATIONS HERE
 
 ## Install Guide
 
