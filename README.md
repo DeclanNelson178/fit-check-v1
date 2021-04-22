@@ -3,7 +3,9 @@
 ## Release Notes
 
 ### Latest Release Software Features
-1. ADD LATEST FEATURES HERE
+1. Built out "Get Connected" to incorporate the social media aspect of the application. Can now add friends, see friends' outfits as well as view your own side by side.
+2. When submitting an outfit to get advice, alongside your results, you will see 3 recommended outfits related to your submitted outfit.
+3. The new outfit recommendations are linked to the fashion site they are from. With a click, you are taken to the site where you can purchase the article of clothing.
 
 ### Known bugs/limitations
 1. Non-fashion-related queries on the GetInspired page can lead to unexpected application behavior
