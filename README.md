@@ -23,7 +23,7 @@
 2. For the AI system to run on a local machines, users will need a `dependencies.zip` file that can be obtained by contacting fitcheckteam@gmail.com separately
 
 ### Download Instructions
-1. Users can download the application either by cloning the public repository under https://github.com/DeclanNelson178/fit-check-v1, or by extracting the relevant files as a zip file using the same url 
+1. Users can download the application either by cloning the public repository under https://github.com/DeclanNelson178/fit-check-v1, or by extracting the repo as a zip file
 
 ### Installation/Run Instructions
 
