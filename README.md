@@ -58,4 +58,4 @@
 #### Troubleshooting
 1. If the frontend does not render, make sure all React dependencies are properly installed by running `npm install depency_name`
 2. If the backend is unresponsive, make sure that all required fields within request bodies are properly inputted from the client-side
-3. AI TROUBLESHOOTING HERE. 
+3. If the AI is not running or returning responses correctly, make sure the dependencies.zip file is extracted and all the folders are in their correct location.
