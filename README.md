@@ -12,7 +12,7 @@
 1. Non-fashion-related queries on the GetInspired page can lead to unexpected application behavior
 2. Tags and descriptions on the GetAdvice page are required fields, else the rating of the outfit will not show
 3. Outfit recommendations are limited to one site and is restricted in range.
-4. Avatar icon in the top right is non-functional
+4. Inability to edit profile and account settings
 
 ## Install Guide
 
