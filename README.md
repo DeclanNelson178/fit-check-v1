@@ -3,12 +3,15 @@
 ## Release Notes
 
 ### Version 5.1 Software Features
-1. FitCheck now hasa social media component! Users can now "Get Connected" and add friends, see friends' fits, as well as view their own fits side by side.
+1. FitCheck now has a social media component! Users can now "Get Connected" and add friends, see friends' fits, as well as view their own fits side by side.
 2. When submitting an outfit to get advice, alongside their results, users will see 3 recommended outfits related to their submitted outfit.
 3. The new outfit recommendations are linked to the fashion site they are from. With a click, users are taken to the site where they may purchase the article of clothing.
 
-### Known bugs/limitations
+### Bug fixes since last
+1. Fixed outfit rating algorithm to be more precise and accurate.
+2. Added user feedback feature to notify them of incorrect username/password
 
+### Known bugs/limitations
 1. Non-fashion-related queries on the GetInspired page can lead to unexpected application behavior
 2. Tags and descriptions on the GetAdvice page are required fields, else the rating of the outfit will not show
 3. Outfit recommendations are limited to one site and is restricted in range.
