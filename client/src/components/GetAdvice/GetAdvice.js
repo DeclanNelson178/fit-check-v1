@@ -208,6 +208,13 @@ class GetAdvice extends Component {
             <span id="e64_9">// GET ADVICE</span>
             <span id="e63_63">// TAGS</span>
             <span id="e63_64">// DESCRIPTION</span>
+            <span  class="e247_9">// PREFERENCE</span>
+            <div class="e247_10">
+              <select id="pref">
+                <option value="fem">Feminine</option>
+                <option value="masc">Masculine</option>
+              </select>
+            </div>
             <div id="e64_123">
               <img id="img_preview" src={this.state.filePreview} />
             </div>
