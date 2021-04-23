@@ -1,6 +1,6 @@
 const axios = require("axios");
 const FormData = require("form-data");
-var json = require("../../data/category_avg.json");
+var json = require("../../data/clothing_store/men-rank.json");
 const math = require("mathjs");
 
 
@@ -14,6 +14,7 @@ const math = require("mathjs");
  * If the AI microservice is not running, return hardcoded fields
  */
 const getRating = async (filePath) => {
+  /*
   var score = Math.floor(Math.random() * 101);
   var attr = [
     { name: "sleeve", probability: 0.11371153593063354 },
@@ -66,7 +67,39 @@ const getRating = async (filePath) => {
     console.log(err);
     console.log("AI Engine not online, using random score");
   }
-  return [Math.floor(score), attr, categories];
+  return [Math.floor(score), attr, categories];*/
+  let score = 90
+  let big_score = 90
+  let attr = {}
+  let categories = {}
+  try {
+    // request to flask server with file path
+    const formData = new FormData();
+    formData.append("filename", filePath.toString());
+    const url = "http://127.0.0.1:8000/get-analysis";
+    console.log("calling ai");
+    const res = await axios({
+      method: "post",
+      url: url,
+      data: {
+        filename: filePath,
+      },
+    }).then((res) => {
+      categories = res.data["categories"]
+      top_category = categories[0].name || 0
+      next_category = categories[1].name || 0
+      score = json[top_category] + json[next_category]
+      best = json['Best']
+      score /= best*2
+      score *= 100
+      console.log("SCORE IS "+ score)
+    });
+    console.log(categories)
+    return [Math.floor(score), attr, categories]
+  } catch (err) {
+    console.log(err);
+    console.log("AI Engine not online, using random score");
+  }
 };
 
 module.exports = getRating;
