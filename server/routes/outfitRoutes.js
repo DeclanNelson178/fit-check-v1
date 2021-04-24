@@ -39,8 +39,11 @@ router.post(
         categories: categories,
       });
       await outfit.save();
-      await User.findByIdAndUpdate({ _id: req.user.id }, { $push: { outfits: outfit }}, { new: true });
-
+      await User.findByIdAndUpdate(
+        { _id: req.user.id },
+        { $push: { outfits: outfit } },
+        { new: true }
+      );
 
       // send uploaded image file to MongoDB
       res.send(outfit);
@@ -114,10 +117,10 @@ router.get("/recommendation/:outfitId", jwtAuth, async (req, res) => {
       owner: userId,
     }).populate("img");
     //TODO: Replace gender with user preference
-    const rec = await getRecommendation(outfit, 'men');
-    res.status(200).send(rec)
-  } catch(error) {
-  	console.log(error);
+    const rec = await getRecommendation(outfit, "men");
+    res.status(200).send(rec);
+  } catch (error) {
+    console.log(error);
   }
 });
 

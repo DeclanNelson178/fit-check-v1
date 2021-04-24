@@ -78,17 +78,6 @@
   left: 190px;
   top: 488px;
 }
-#e64_31 {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
-  background-color: rgba(255, 255, 255, 1);
-  opacity: 1;
-  border: 1px solid rgba(0, 0, 0, 1);
-  width: 895px;
-  height: 99px;
-  position: absolute;
-  left: 190px;
-  top: 618px;
-}
 #submit_button {
   z-index: 1;
   opacity: 0;
@@ -117,7 +106,7 @@
   opacity: 1;
   border: 0ch;
   width: 99%;
-  height: 98%;
+  height: 95%;
   position: relative;
   left: 0px;
   top: 0px;
@@ -244,8 +233,9 @@ input[type="file"] {
 #e64_31 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
   background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
   width: 439px;
-  height: 203px;
+  height: 115px;
   position: absolute;
   left: 90px;
   top: 435px;
@@ -705,4 +695,84 @@ input[type="file"] {
   left: 0px;
   top: 0px;
   opacity: 1;
+}
+
+.e247_9 { 
+	color:rgba(0, 0, 0, 1);
+	width:185px;
+	height:26px;
+	position:absolute;
+	left:82px;
+	top:584px;
+	font-family:Helvetica;
+	text-align:center;
+	font-size:24px;
+  font-weight: bold;
+	letter-spacing:0;
+}
+
+.e247_10 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.10000000149011612);
+	background-color:rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+	width:439px;
+	height:48px;
+	position:relative;
+	left:90px;
+	top:629px;
+}
+ 
+.e247_10 select {
+  display: none; /*hide original SELECT element:*/
+}
+ 
+.select-selected {
+  background-color: White;
+}
+ 
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+ 
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+ 
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #000000;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+ 
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: White;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+ 
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+ 
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
