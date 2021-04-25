@@ -21,11 +21,13 @@ class GetAdvice extends Component {
       filePreview: null,
       rating: -1,
       recommendation: null,
+      preference: "fem"
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.onFileChange = this.onFileChange.bind(this);
+    this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
   }
 
   // Updates dynamically when user inputs tags
@@ -34,6 +36,7 @@ class GetAdvice extends Component {
     const oldDescription = this.state.description;
     const oldFile = this.state.file;
     const oldFilePreview = this.state.filePreview;
+    const oldPreference = this.state.preference
     await this.setState({
       jwt: oldJwt,
       description: oldDescription,
@@ -42,6 +45,7 @@ class GetAdvice extends Component {
       filePreview: oldFilePreview,
       rating: -1,
       recommendation: null,
+      preference: oldPreference
     });
   }
 
@@ -51,14 +55,36 @@ class GetAdvice extends Component {
     const oldTags = this.state.tags;
     const oldFile = this.state.file;
     const oldFilePreview = this.state.filePreview;
+    const oldDescription = this.state.description
+    const oldPreference = this.state.preference
     await this.setState({
       jwt: oldJwt,
-      tags: oldTags,
       description: e.target.value,
+      tags: oldTags,
       file: oldFile,
       filePreview: oldFilePreview,
       rating: -1,
       recommendation: null,
+      preference: oldPreference
+    });
+  }
+
+  // Updates dynamically when user selects preference
+  async handlePreferenceChange(e) {
+    const oldJwt = this.state.jwt;
+    const oldTags = this.state.tags;
+    const oldFile = this.state.file;
+    const oldFilePreview = this.state.filePreview;
+    const oldDescription = this.state.description
+    await this.setState({
+      jwt: oldJwt,
+      description: oldDescription,
+      tags: oldTags,
+      file: oldFile,
+      filePreview: oldFilePreview,
+      rating: -1,
+      recommendation: null,
+      preference: e.target.value
     });
   }
 
@@ -67,6 +93,7 @@ class GetAdvice extends Component {
     const oldJwt = this.state.jwt;
     const oldTags = this.state.tags;
     const oldDescription = this.state.description;
+    const oldPreference = this.state.preference
     console.log(event.target.files[0]);
     await this.setState({
       jwt: oldJwt,
@@ -80,6 +107,7 @@ class GetAdvice extends Component {
       ),
       rating: -1,
       recommendation: null,
+      preference: oldPreference
     });
     document.getElementById("e63_34").style.opacity = 0;
   }
@@ -92,6 +120,7 @@ class GetAdvice extends Component {
     formData.append("file", this.state.file);
     formData.append("tags", this.state.tags);
     formData.append("description", this.state.description);
+    formData.append("preference", this.state.preference)
     // Request made to the backend api
     // Send formData object
     const res = await axios.post("http://localhost:5000/outfits", formData, {
@@ -112,6 +141,7 @@ class GetAdvice extends Component {
     const oldDescription = this.state.description;
     const oldFile = this.state.file;
     const oldFilePreview = this.state.filePreview;
+    const oldPreference = this.state.preference
     await this.setState({
       jwt: oldJwt,
       tags: oldTags,
@@ -120,6 +150,7 @@ class GetAdvice extends Component {
       filePreview: oldFilePreview,
       rating: res.data.rating,
       recommendation: recommendedOutfits.data,
+      preference: oldPreference
     });
   }
 
@@ -210,7 +241,7 @@ class GetAdvice extends Component {
             <span id="e63_64">// DESCRIPTION</span>
             <span  class="e247_9">// PREFERENCE</span>
             <div class="e247_10">
-              <select id="pref">
+              <select id="pref" onChange={this.handlePreferenceChange}>
                 <option value="fem">Feminine</option>
                 <option value="masc">Masculine</option>
               </select>

@@ -16,6 +16,10 @@ const outfitSchema = new Schema({
   tags: {
     type: Array,
     required: false,
+  },  
+  preference: {
+    type: String,
+    required: true,
   },
   rating: {
     type: Number,

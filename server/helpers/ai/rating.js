@@ -1,6 +1,6 @@
 const axios = require("axios");
 const FormData = require("form-data");
-var json = require("../../data/clothing_store/men-rank.json");
+
 const math = require("mathjs");
 
 
@@ -13,7 +13,7 @@ const math = require("mathjs");
  * rating.
  * If the AI microservice is not running, return hardcoded fields
  */
-const getRating = async (filePath) => {
+const getRating = async (filePath, preference, tags) => {
   /*
   var score = Math.floor(Math.random() * 101);
   var attr = [
@@ -68,10 +68,27 @@ const getRating = async (filePath) => {
     console.log("AI Engine not online, using random score");
   }
   return [Math.floor(score), attr, categories];*/
-  let score = 90
-  let big_score = 90
-  let attr = {}
-  let categories = {}
+  var score = Math.floor(Math.random() * 101);
+  var attr = [
+    { name: "sleeve", probability: 0.11371153593063354 },
+    { name: "knit", probability: 0.08053527027368546 },
+    { name: "print", probability: 0.07799622416496277 },
+    { name: "maxi", probability: 0.06594035029411316 },
+    { name: "lace", probability: 0.06241264566779137 },
+    { name: "denim", probability: 0.05586576834321022 },
+    { name: "striped", probability: 0.0461270734667778 },
+    { name: "pink", probability: 0.04370826110243797 },
+    { name: "chiffon", probability: 0.04324888437986374 },
+    { name: "stripe", probability: 0.04276769608259201 },
+  ];
+  let categories = [];
+  let gender = "women"
+  if (preference == 'masc') {
+    gender = "men"
+  }
+  let lower_tags = []
+  tags.forEach(v => lower_tags.push(v.toLowerCase()));
+  var json = require("../../data/clothing_store/"+gender+"-rank.json");
   try {
     // request to flask server with file path
     const formData = new FormData();
@@ -86,11 +103,19 @@ const getRating = async (filePath) => {
       },
     }).then((res) => {
       categories = res.data["categories"]
-      top_category = categories[0].name || 0
-      next_category = categories[1].name || 0
-      score = json[top_category] + json[next_category]
+      let found = false
+      categories.forEach((entry) => {
+        if (lower_tags.includes(entry.name.toLowerCase())) {
+          category = entry.name
+          found = true
+        }
+      })
+      if (!found) {
+        category = categories[0].name
+      }
+      score = json[category] || 0
       best = json['Best']
-      score /= best*2
+      score /= best
       score *= 100
       console.log("SCORE IS "+ score)
     });
