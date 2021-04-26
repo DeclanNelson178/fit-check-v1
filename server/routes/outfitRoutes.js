@@ -16,7 +16,8 @@ router.post(
   [jwtAuth, upload.single("file")],
   async (req, res) => {
     try {
-      let { tags, description } = req.body;
+      let { tags, description, preference } = req.body;
+      console.log("PREFERENCE IS "+preference)
       const { path, mimetype } = req.file;
       const file = new File({
         filePath: path,
@@ -24,14 +25,15 @@ router.post(
         owner: req.user.id,
       });
       await file.save();
-
-      const [rating, attributes, categories] = await getRating(path);
-
       // parse different tags associated with image
       tags = tags.split(",");
+      const [rating, attributes, categories] = await getRating(path, preference, tags);
+
+      
       const outfit = new Outfit({
         description: description,
         tags: tags,
+        preference: preference,
         img: file,
         owner: req.user.id,
         rating: rating,
@@ -117,7 +119,7 @@ router.get("/recommendation/:outfitId", jwtAuth, async (req, res) => {
       owner: userId,
     }).populate("img");
     //TODO: Replace gender with user preference
-    const rec = await getRecommendation(outfit, "men");
+    const rec = await getRecommendation(outfit);
     res.status(200).send(rec);
   } catch (error) {
     console.log(error);
